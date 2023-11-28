@@ -1,0 +1,33 @@
+$layout-name: l-footer;
+
+$footer-color: #1c1c1c;
+
+.#{$layout-name} {
+	@include container;
+	background-color: #fff;
+	color: var(--text-color-4);
+
+	&__content {
+		@include content;
+		align-items: center;
+		flex-direction: column-reverse;
+		gap: $global-module-size;
+		justify-content: center;
+		padding: $global-module-size;
+
+		@include breakpoint(500) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	&__social {
+
+		.c-social {
+			align-items: center;
+			display: flex;
+			gap: rem(10);
+			justify-content: center;
+		}
+	}
+}

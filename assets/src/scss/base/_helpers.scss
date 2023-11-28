@@ -1,0 +1,61 @@
+/** Hidden text of a element.
+Hide from normal users, but active from screen readers
+**/
+.screen-readers-only,
+.screen-reader-text,
+.screen-reader-response {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/** Skip to Content Link
+Active from screen readers, but hidden from tab navigators
+**/
+#skip a {
+	height: 1px;
+	left: -10000px;
+	overflow: hidden;
+	position: absolute;
+	top: auto;
+	width: 1px;
+}
+
+#skip a:focus {
+	height: auto;
+	position: static;
+	width: auto;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: rem(80);
+}
+
+#wpadminbar {
+	display: none;
+}
+
+body.logged-in.admin-bar {
+	margin-top: -46px;
+	@include breakpoint(782) {
+		margin-top: -32px;
+	}
+}
+
+/*Debug CSS*/
+
+/* .debug {
+	outline: 1px solid red;
+}
+.debug-blue {
+	outline: 1px solid blue;
+}
+.debug-green {
+	outline: 1px solid green;
+} */

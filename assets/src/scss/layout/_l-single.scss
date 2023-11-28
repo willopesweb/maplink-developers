@@ -1,0 +1,132 @@
+$layout-name: l-single;
+
+.#{$layout-name} {
+	padding-top: rem(100);
+
+	&__content {
+		display: flex;
+		flex: 0 1 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		font-size: rem(18);
+		line-height: rem(26);
+		margin: 0 5%;
+		max-width: 90%;
+
+		&--404 {
+			text-align: center;
+
+			.l-page__title {
+				text-align: center;
+				width: 100%;
+			}
+		}
+
+		@include breakpoint(600) {
+			margin: 0 10%;
+			max-width: 80%;
+		}
+
+		@include breakpoint(1500) {
+			margin: 0 auto;
+			max-width: $global-max-width;
+		}
+	}
+
+	&__post-content {
+		width: 100%;
+
+		p {
+			display: block;
+			font-size: rem(18);
+			line-height: 2rem;
+			margin-bottom: $global-module-size;
+			width: 100%;
+
+			img {
+				display: block;
+				margin: 0 auto;
+				max-height: rem(400);
+				max-width: 100%;
+				object-fit: contain;
+			}
+		}
+
+		a:not(.c-button):not(.page-numbers):not([class^="icon"]) {
+			color: var(--theme-color-6);
+			transition: 0.15s linear;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		& .wp-block-image {
+			display: block;
+			margin-bottom: $global-module-size * 2;
+			text-align: center;
+			width: 100%;
+
+			figcaption {
+				font-size: rem(14);
+			}
+		}
+
+		.wp-block-embed {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin: $global-module-size * 2 auto;
+			width: 100%;
+
+			&__wrapper {
+				height: 0;
+				max-width: rem(900);
+				padding-bottom: 56.25%;
+				position: relative;
+				width: 100%;
+
+				iframe {
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+			}
+
+			figcaption {
+				margin-top: rem(10);
+			}
+		}
+
+		.wp-block-quote {
+			border-left: 0.25em solid;
+			margin: 0 0 1.75em;
+			overflow-wrap: break-word;
+			padding-left: 1em;
+			position: relative;
+		}
+
+		ul:not(.splide__pagination) {
+			list-style: initial;
+			margin-bottom: $global-module-size;
+			overflow-wrap: break-word;
+			padding-left: $global-module-size;
+
+			li:not(.c-carousel__item) {
+				font-size: rem(20);
+				line-height: 2rem;
+				margin-bottom: $global-module-size;
+			}
+		}
+
+		h2 {
+			font-size: rem(36);
+			line-height: rem(42);
+			margin-bottom: $global-module-size;
+			margin-top: $global-module-size * 2;
+		}
+	}
+}

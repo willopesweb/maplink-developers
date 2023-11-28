@@ -1,0 +1,97 @@
+$layout-name: l-home;
+
+.#{$layout-name} {
+	&__about {
+		@include content("grid");
+		gap: $global-module-size;
+		padding-bottom: $global-module-size * 4;
+		padding-top: $global-module-size * 4;
+		place-items: center;
+
+		@include breakpoint(600) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+	}
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		gap: $global-module-size /2;
+	}
+
+	&__title {
+		color: var(--theme-color-1);
+		font-size: rem(28);
+		font-weight: 500;
+	}
+
+	&__subtitle {
+		color: var(--text-color-1);
+		font-size: rem(18);
+		line-height: rem(28);
+	}
+
+	&__video {
+		max-width: 100%;
+	}
+
+	&__apis {
+		@include content("grid");
+		gap: $global-module-size;
+
+		@include breakpoint(600) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include breakpoint(800) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+
+	&__api {
+		border: 1px solid var(--theme-color-4);
+		border-radius: rem(15);
+		display: flex;
+		flex-direction: column;
+		gap: $global-module-size;
+		justify-content: space-between;
+		padding: $global-module-size;
+	}
+
+	&__api-header {
+		align-items: center;
+		display: flex;
+		gap: $global-module-size / 2;
+		min-height: rem(60);
+	}
+
+	&__api-title {
+		color: var(--theme-color-1);
+		font-weight: 500;
+	}
+
+	&__api-description {
+		color: var(--text-color-3);
+		font-size: rem(16);
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+	&__api-link {
+		color: var(--theme-color-1);
+		font-weight: 500;
+		transition: var(--theme-default-transition);
+
+		&::after {
+			content: ">";
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: var(--theme-color-2);
+		}
+	}
+
+}

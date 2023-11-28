@@ -1,0 +1,58 @@
+$layout-name: l-page;
+
+.#{$layout-name} {
+	&__content {
+		@include content;
+	}
+
+	&__header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		gap: $global-module-size;
+		justify-content: center;
+		padding: $global-module-size * 2 0;
+		text-align: center;
+		width: 100%;
+	}
+
+	&__title {
+		color: var(--text-color-3);
+		font-family: "Josefin Sans", sans-serif;
+		font-size: rem(28);
+		font-weight: 400;
+		letter-spacing: -3px;
+		line-height: rem(38);
+		text-transform: uppercase;
+
+		@include breakpoint(600) {
+			font-size: rem(60);
+			line-height: rem(68);
+		}
+	}
+
+	&__subtitle {
+		color: var(--text-color-3);
+		font-size: rem(20);
+		line-height: rem(26);
+		max-width: rem(600);
+	}
+
+	/*   &__archive {
+    @include content("grid");
+    gap: $global-module-size;
+    @include breakpoint(600) {
+      grid-template-columns: 1fr 1fr;
+      .c-pagination {
+        grid-column: 1 / 3;
+      }
+    }
+
+    @include breakpoint(1000) {
+      grid-template-columns: 1fr 1fr 1fr;
+      .c-pagination {
+        grid-column: 1 / 5;
+      }
+    }
+  } */
+}

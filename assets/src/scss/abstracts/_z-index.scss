@@ -1,0 +1,19 @@
+$z-indexes: (
+	"fixed-header": 800,
+	"filters-products": 900,
+	"mobile-menu": 4,
+	"above": 500,
+	"trigger": 900,
+	"modal": 800,
+	"overlay": 300,
+	"filter": 200,
+	"dropdown": 200,
+	"header": 200,
+	"add-wishlist": 100,
+	"default": 1,
+	"below": -1,
+);
+
+@function z-index($layer) {
+	@return map-get($z-indexes, $layer);
+}

@@ -1,0 +1,33 @@
+/*SEMANTIC GRID*/
+$gutter: rem(20);
+
+@mixin container {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+}
+
+@mixin content($display: flex) {
+	@if ($display == "flex") {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		flex: 0 1 auto;
+	} @elseif ($display == "grid") {
+		display: grid;
+	}
+	margin: 0 5%;
+	max-width: 90%;
+	@include breakpoint(1500) {
+		margin: 0 auto;
+		max-width: $global-max-width;
+	}
+}
+
+@mixin col($col, $total-col: 12) {
+	$width: ((100% * $col) / $total-col);
+	flex: 0 0 auto;
+	flex-basis: calc(#{$width} - #{$gutter});
+	margin: $gutter / 2;
+	max-width: calc(#{$width} - #{$gutter});
+}

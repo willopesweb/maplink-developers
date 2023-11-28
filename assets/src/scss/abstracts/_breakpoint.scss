@@ -1,0 +1,53 @@
+// @see https://desenvolvimentoparaweb.com/css/css-breakpoints-maneira-correta/
+
+/*FIXED BREAKPOINTS*/
+$sm-device: 640px; /*640px - sm - Small Screens - Tablets (>=768px)*/
+$md-device: 992px; /*992px - md - Medium Screens - Desktops (<992px)*/
+$lg-device: 1200px; /*1200px - lg - Large Screens (<1200px)*/
+
+@mixin sm-device {
+	@media only screen and (min-width: $sm-device) {
+		@content;
+	}
+}
+
+@mixin md-device {
+	@media only screen and (min-width: $md-device) {
+		@content;
+	}
+}
+@mixin lg-device {
+	@media only screen and (min-width: $lg-device) {
+		@content;
+	}
+}
+
+@mixin only-xs-device {
+	@media only screen and (max-width: "#{$sm-device - 1}") {
+		@content;
+	}
+}
+
+@mixin only-sm-device {
+	@media only screen and (min-width: $sm-device) and (max-width: "#{$md-device - 1}") {
+		@content;
+	}
+}
+
+@mixin only-md-device {
+	@media only screen and (min-width: $md-device) and (max-width: "#{$lg-device - 1}") {
+		@content;
+	}
+}
+
+@mixin breakpoint($point, $direction: "mobile") {
+	@if ($direction == "mobile") {
+		@media (min-width: ($point / 16) + "em") {
+			@content;
+		}
+	} @else if ($direction == "desktop") {
+		@media (max-width: ($point / 16) + "em") {
+			@content;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+body {
+
+	transition: background-color 0.25s;
+	will-change: background-color;
+
+	&.dark-theme {
+		--body-background-color: var(--theme-color-2);
+		--main-text-color: var(--theme-color-3);
+		--logo-color: var(--theme-color-3);
+		--desktop-menu-item-hover: var(--theme-color-6);
+	}
+}

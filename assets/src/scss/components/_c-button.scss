@@ -1,0 +1,39 @@
+$component-name: c-button;
+
+@mixin c-button {
+	background-color: var(--theme-color-2);
+	border: 0;
+	border-radius: rem(10);
+	color: var(--text-color-2);
+	cursor: pointer;
+	font-family: var(--font-family-1);
+	font-weight: 700;
+	padding: rem(15) rem(20);
+	text-transform: uppercase;
+	transition: var(--theme-default-transition);
+	width: fit-content;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken(#6ba222, 10%);
+	}
+}
+
+@mixin c-button--secondary {
+	background-color: #ed6704;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken(#ed6704, 10%);
+	}
+}
+
+.#{$component-name} {
+	@include c-button;
+}
+
+.#{$component-name}--secondary {
+	@include c-button--secondary;
+}

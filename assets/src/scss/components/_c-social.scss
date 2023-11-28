@@ -1,0 +1,44 @@
+$component-name: c-social;
+
+.#{$component-name} {
+	align-items: center;
+	display: flex;
+
+	& a {
+		color: inherit;
+		font-size: rem(20);
+		transition: var(--theme-default-transition);
+
+		/*  &.icon-facebook::before,
+    &.icon-twitter::before {
+      -webkit-text-fill-color: white;
+      -webkit-text-stroke: 3px black;
+    } */
+
+		&.icon-instagram:hover::before {
+			color: social-media-color("instagram");
+		}
+
+		&.icon-facebook:hover::before {
+			color: social-media-color("facebook");
+			//-webkit-text-stroke: 3px social-media-color("facebook");
+		}
+
+		&.icon-youtube:hover::before {
+			color: social-media-color("youtube");
+		}
+
+		&.icon-linkedin:hover::before {
+			color: social-media-color("linkedin");
+		}
+
+		&.icon-twitter:hover::before {
+			color: social-media-color("twitter");
+			-webkit-text-stroke: 3px social-media-color("twitter");
+		}
+
+		&.icon-whatsapp:hover {
+			color: social-media-color("whatsapp");
+		}
+	}
+}

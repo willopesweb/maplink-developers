@@ -1,0 +1,39 @@
+$layout-name: c-post;
+
+.#{$layout-name} {
+	border: 1px solid var(--theme-color-1);
+	box-shadow: var(--theme-box-shadow);
+	display: flex;
+	flex-direction: column;
+	gap: $global-module-size;
+	padding: $global-module-size;
+	transition: var(--theme-default-transition);
+
+	&:hover,
+	&:active,
+	&focus {
+		border-color: var(--theme-color-2);
+		.c-post__title {
+			color: var(--theme-color-2);
+		}
+	}
+	&__title {
+		color: var(--theme-color-1);
+		margin-bottom: rem(10);
+		transition: var(--theme-default-transition);
+	}
+
+	&__image {
+		align-items: center;
+		display: flex;
+		flex-direction: center;
+		height: rem(200);
+		width: 100%;
+		img {
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			width: 100%;
+		}
+	}
+}

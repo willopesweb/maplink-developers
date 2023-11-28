@@ -1,0 +1,20 @@
+{
+    "files.exclude": {
+        "node_modules": true,
+        ".vscode": true,
+        ".gitignore": true,
+        ".babelrc": true,
+        ".eslintrc.json":true,
+        ".stylelintrc.json": true,
+        "webpack.config.js":false,
+        "package.json": false,
+        "package-lock.json": true,
+        "assets/public": true,
+        "emmet.includeLanguages": {
+            "javascript": "javascriptreact"
+        }
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
+}

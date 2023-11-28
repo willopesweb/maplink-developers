@@ -1,0 +1,62 @@
+$component-name: c-nav;
+
+.#{$component-name} {
+
+	@media screen and (max-width: 949px) {
+		background-color: #fff;
+		border-right: 1px solid var(--theme-color-4);
+		height: 100%;
+		left: 0;
+		padding: $global-module-size * 2;
+		position: fixed;
+		top: 0;
+		transform: translate3d(-300px, 0, 0);
+		transition: var(--theme-default-transition);
+		width: 300px;
+
+		&.is-open {
+			box-shadow: var(--theme-box-shadow);
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	@include breakpoint(950) {
+		display: flex;
+		justify-content: flex-end;
+		width: 80%;
+	}
+
+	& > ul {
+		display: flex;
+		flex-direction: column;
+		gap: $global-module-size;
+		justify-content: space-around;
+		width: 90%;
+
+		@include breakpoint(950) {
+			flex-direction: row;
+			width: fit-content;
+		}
+	}
+
+	&__link {
+		align-items: center;
+		color: var(--text-color-4);
+		display: flex;
+		font-size: rem(14);
+		font-weight: 400;
+		justify-content: center;
+		width: fit-content;
+
+		a {
+			padding: rem(2);
+			transition: var(--theme-default-transition);
+
+			&:hover,
+			&:focus,
+			&:active {
+				color: var(--theme-color-2);
+			}
+		}
+	}
+}
