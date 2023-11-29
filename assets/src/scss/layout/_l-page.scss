@@ -17,25 +17,10 @@ $layout-name: l-page;
 	}
 
 	&__title {
-		color: var(--text-color-3);
-		font-family: "Josefin Sans", sans-serif;
+		color: inherit;
+		font-family: $font-family-1;
 		font-size: rem(28);
-		font-weight: 400;
-		letter-spacing: -3px;
-		line-height: rem(38);
-		text-transform: uppercase;
-
-		@include breakpoint(600) {
-			font-size: rem(60);
-			line-height: rem(68);
-		}
-	}
-
-	&__subtitle {
-		color: var(--text-color-3);
-		font-size: rem(20);
-		line-height: rem(26);
-		max-width: rem(600);
+		font-weight: 500;
 	}
 
 	/*   &__archive {

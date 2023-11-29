@@ -11,13 +11,13 @@ if (!isset($image_dir)) :
 endif;
 ?>
 
-<main class="l-home__about">
+<main class="l-home__main">
   <header class="l-home__header">
     <h1 class="l-home__title"><?= get_field("titulo", $page_home_id) ?></h1>
     <p class="l-home__subtitle"><?= get_field("subtitulo", $page_home_id) ?></p>
   </header>
   <div class="l-home__video">
-    <video autoplay="" muted="" playsinline="" loop="">
+    <video height="528" autoplay="" muted="" playsinline="" loop="">
       <source src="<?= get_field("video", $page_home_id) ?>">
       Your browser does not support the video tag.
     </video>
@@ -45,6 +45,15 @@ endif;
   <?php
   }
   ?>
+</section>
+
+<section class="l-home__about" style="background-image:url(<?= $image_dir ?>/bg.png)">
+  <div class="l-page__content">
+    <div class="l-home__about-content">
+      <h1 class="l-page__title"><?= get_field("titulo_apresentacao", $page_home_id) ?></h1>
+      <?= get_field("apresentacao", $page_home_id) ?>
+    </div>
+  </div>
 </section>
 <?php
 get_footer();

@@ -4,31 +4,40 @@ function list_categories()
 {
   $idioma_atual = pll_current_language();
 
-  $categorias = get_categories(array(
-    'taxonomy' => 'category',
-    'lang' => $idioma_atual,
-  ));
+  global $wpdb;
+
+  $term_taxonomy_table = $wpdb->prefix . 'term_taxonomy';
+
+  $categorias_ids = $wpdb->get_col(
+    "SELECT term_taxonomy_id FROM $term_taxonomy_table WHERE taxonomy = 'category'"
+  );
 
   $categorias_completas = array();
+  $categorias_adicionadas = array();
 
-  foreach ($categorias as $categoria) {
-    $link_categoria = get_category_link($categoria->term_id);
-    $descricao_categoria = $categoria->description;
-    $icone_categoria = get_field('icone', 'category_' . $categoria->term_id);
+  foreach ($categorias_ids as $categoria_id) {
+    $categoria_translated_id = pll_get_term($categoria_id, $idioma_atual);
 
-    $categoria_completa = array(
-      'nome' => $categoria->name,
-      'link' => $link_categoria,
-      'descricao' => $descricao_categoria,
-      'icone' => $icone_categoria,
-    );
-    if ($categoria_completa["nome"] !== "Uncategorized") {
-      $categorias_completas[] = $categoria_completa;
+    if ($categoria_translated_id && !in_array($categoria_translated_id, $categorias_adicionadas)) {
+      $categoria_translated = get_term($categoria_translated_id);
+      $categoria_completa = array(
+        'nome'       => $categoria_translated->name,
+        'link'       => get_category_link($categoria_translated_id),
+        'descricao'  => $categoria_translated->description,
+        'icone'      => get_field('icone', 'category_' . $categoria_translated->term_id),
+      );
+
+      if (($categoria_completa["nome"] !== "Uncategorized") && ($categoria_completa["nome"] !== "Sem categoria")) {
+        $categorias_completas[] = $categoria_completa;
+        $categorias_adicionadas[] = $categoria_translated_id;
+      }
     }
   }
 
   return $categorias_completas;
 }
+
+
 
 // Retorna redes sociais
 function theme_social_networks()

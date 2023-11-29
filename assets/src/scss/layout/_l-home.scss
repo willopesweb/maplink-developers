@@ -1,8 +1,9 @@
 $layout-name: l-home;
 
 .#{$layout-name} {
-	&__about {
+	&__main {
 		@include content("grid");
+
 		gap: $global-module-size;
 		padding-bottom: $global-module-size * 4;
 		padding-top: $global-module-size * 4;
@@ -28,17 +29,23 @@ $layout-name: l-home;
 
 	&__subtitle {
 		color: var(--text-color-1);
-		font-size: rem(18);
+		font-size: rem(14);
 		line-height: rem(28);
+
+		@include breakpoint(500) {
+			font-size: rem(18);
+		}
 	}
 
 	&__video {
 		max-width: 100%;
+		min-height: rem(528)
 	}
 
 	&__apis {
 		@include content("grid");
 		gap: $global-module-size;
+		padding-bottom: $global-module-size * 4;
 
 		@include breakpoint(600) {
 			grid-template-columns: 1fr 1fr;
@@ -73,9 +80,13 @@ $layout-name: l-home;
 
 	&__api-description {
 		color: var(--text-color-3);
-		font-size: rem(16);
+		font-size: rem(14);
 		font-weight: 400;
 		line-height: 1.5;
+
+		@include breakpoint(500) {
+			font-size: rem(16);
+		}
 	}
 
 	&__api-link {
@@ -91,6 +102,33 @@ $layout-name: l-home;
 		&:focus,
 		&:active {
 			color: var(--theme-color-2);
+		}
+	}
+
+	&__about {
+		background-position: center;
+		background-color: var(--theme-color-1);
+		background-size: cover;
+		color: #fff;
+		padding: $global-module-size * 4 0;
+	}
+
+	&__about-content {
+		max-width: rem(500);
+
+		.l-page__title {
+			margin-bottom: $global-module-size;
+		}
+
+		p {
+			font-size: rem(14);
+			line-height: rem(28);
+			margin-bottom: $global-module-size;
+			font-weight: 300;
+
+			@include breakpoint(500) {
+				font-size: rem(18);
+			}
 		}
 	}
 
