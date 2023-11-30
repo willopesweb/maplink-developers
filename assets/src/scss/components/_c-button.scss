@@ -1,9 +1,8 @@
 $component-name: c-button;
 
 @mixin c-button {
-	background-color: var(--theme-color-2);
+	background-color: var(--theme-color-1);
 	border: 0;
-	border-radius: rem(10);
 	color: var(--text-color-2);
 	cursor: pointer;
 	font-family: var(--font-family-1);
@@ -16,7 +15,7 @@ $component-name: c-button;
 	&:hover,
 	&:focus,
 	&:active {
-		background-color: darken(#6ba222, 10%);
+		background-color: var(--theme-color-2);
 	}
 }
 

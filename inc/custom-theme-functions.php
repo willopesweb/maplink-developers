@@ -1,8 +1,36 @@
 <?php
+//Formulário de pesquisa
+
+function renderSearchForm()
+{
+  $current_language = get_locale();
+
+  $placeholder = "Digite aqui o que você procura";
+  $label = "Pesquisar por:";
+
+  if ($current_language === 'en_US') {
+    $placeholder = "Enter what you're looking for";
+    $label = "Search for:";
+  } elseif ($current_language === 'es_ES') {
+    $placeholder = "Ingrese lo que está buscando";
+    $label = "Buscar por:";
+  }
+
+  $html = '';
+  $html .= '<form role="search" method="get" class="l-header__search-form" action="' . esc_url(home_url('/')) . '">';
+  $html .= '<label>';
+  $html .= '<span class="screen-reader-text">' . $label . '</span>';
+  $html .= '<input required type="search" class="search-field" placeholder="' . $placeholder . '" value="' . get_search_query() . '" name="s" />';
+  $html .= '</label>';
+  $html .= '<button class="l-header__search-button icon-search" type="submit"></button>';
+  $html .= '</form>';
+
+  return $html;
+}
 //Retorna todas as categoria
 function list_categories()
 {
-  $idioma_atual = pll_current_language();
+  $current_language = pll_current_language();
 
   global $wpdb;
 
@@ -16,7 +44,7 @@ function list_categories()
   $categorias_adicionadas = array();
 
   foreach ($categorias_ids as $categoria_id) {
-    $categoria_translated_id = pll_get_term($categoria_id, $idioma_atual);
+    $categoria_translated_id = pll_get_term($categoria_id, $current_language);
 
     if ($categoria_translated_id && !in_array($categoria_translated_id, $categorias_adicionadas)) {
       $categoria_translated = get_term($categoria_translated_id);

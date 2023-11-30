@@ -2,6 +2,8 @@
 if (!isset($image_dir)) :
   $image_dir = get_stylesheet_directory_uri() . '/' . ASSETS_DIR . '/img';
 endif;
+
+$search_placeholder = ""
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_locale() ?>">
@@ -43,11 +45,14 @@ endif;
     }
     ?>
     <div class="l-header__content">
-      <h1 class="screen-readers-only"><?php wp_title('|'); ?></h1>
-
       <a class="l-header__logo" href="<?= get_site_url() ?>">
+        <h1 class="screen-readers-only"><?php wp_title('|'); ?></h1>
         <img src="<?= get_stylesheet_directory_uri() . '/' . ASSETS_DIR ?>/img/logo.svg" alt="<?php wp_title('|'); ?>">
       </a>
+
+      <div class="l-header__search" id="search">
+        <?= renderSearchForm() ?>
+      </div>
 
       <nav id="nav" class="c-nav js-mobile-menu" role="navigation">
         <h1 class="screen-readers-only">Menu Principal</h1>
@@ -56,8 +61,6 @@ endif;
           <li class="c-nav__link js-link-scroll"><a href="#">Suporte</a></li>
         </ul>
       </nav>
-
-
 
       <div class="l-header__buttons">
         <?php
@@ -78,7 +81,13 @@ endif;
           }
         }
         ?>
+        <span class="icon-search js-search-button l-header__search-icon"></span>
         <span class="icon-menu js-mobile-btn mobile-icon"></span>
+      </div>
+    </div>
+    <div class="l-header__search-mobile" id="searchMobile">
+      <div class="l-page__content">
+        <?= renderSearchForm() ?>
       </div>
     </div>
   </header>

@@ -2,7 +2,7 @@ $component-name: c-nav;
 
 .#{$component-name} {
 
-	@media screen and (max-width: 949px) {
+	@media screen and (max-width: 950px) {
 		background-color: #fff;
 		border-right: 1px solid var(--theme-color-4);
 		height: 100%;
@@ -13,6 +13,7 @@ $component-name: c-nav;
 		transform: translate3d(-300px, 0, 0);
 		transition: var(--theme-default-transition);
 		width: 300px;
+		z-index: z-index("mobile-menu");
 
 		&.is-open {
 			box-shadow: var(--theme-box-shadow);
@@ -22,8 +23,7 @@ $component-name: c-nav;
 
 	@include breakpoint(950) {
 		display: flex;
-		justify-content: flex-end;
-		width: 80%;
+		justify-content: center;
 	}
 
 	& > ul {

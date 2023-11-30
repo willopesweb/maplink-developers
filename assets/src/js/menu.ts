@@ -14,3 +14,20 @@ if (mobileBtn && mobileMenu) {
     });
   });
 }
+
+const searchButton: NodeListOf<HTMLElement> | null =
+  document.querySelectorAll(".js-search-button");
+const searchBar: HTMLElement | null = document.getElementById("searchMobile");
+
+
+console.log(searchButton);
+console.log(searchBar);
+
+if (searchButton && searchBar) {
+  searchButton.forEach((button) =>
+    button.addEventListener("click", (e: Event) => {
+      e.preventDefault();
+      searchBar.classList.toggle("is-visible");
+    })
+  );
+}

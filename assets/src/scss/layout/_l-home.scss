@@ -39,7 +39,10 @@ $layout-name: l-home;
 
 	&__video {
 		max-width: 100%;
-		min-height: rem(528)
+
+		@include breakpoint(1000) {
+			min-height: rem(400);
+		}
 	}
 
 	&__apis {
@@ -106,8 +109,8 @@ $layout-name: l-home;
 	}
 
 	&__about {
-		background-position: center;
 		background-color: var(--theme-color-1);
+		background-position: center;
 		background-size: cover;
 		color: #fff;
 		padding: $global-module-size * 4 0;
@@ -122,9 +125,9 @@ $layout-name: l-home;
 
 		p {
 			font-size: rem(14);
+			font-weight: 300;
 			line-height: rem(28);
 			margin-bottom: $global-module-size;
-			font-weight: 300;
 
 			@include breakpoint(500) {
 				font-size: rem(18);

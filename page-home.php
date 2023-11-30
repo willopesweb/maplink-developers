@@ -11,7 +11,7 @@ if (!isset($image_dir)) :
 endif;
 ?>
 
-<main class="l-home__main">
+<main class="l-home__main" id="content">
   <header class="l-home__header">
     <h1 class="l-home__title"><?= get_field("titulo", $page_home_id) ?></h1>
     <p class="l-home__subtitle"><?= get_field("subtitulo", $page_home_id) ?></p>

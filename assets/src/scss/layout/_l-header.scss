@@ -5,20 +5,32 @@ $header-medium: 600;
 	@include container;
 	background-color: #fff;
 	border-bottom: 1px solid var(--theme-color-4);
+	position: relative;
+
+	&__content {
+		@include content;
+		align-items: center;
+		flex-wrap: nowrap;
+		gap: $global-module-size;
+		height: 100%;
+		justify-content: space-between;
+		padding-bottom: $global-module-size;
+		padding-top: $global-module-size;
+	}
 
 	&__languages-mobile {
 		border-bottom: 1px solid var(--theme-color-4);
 
-		@include breakpoint(500) {
+		@include breakpoint(1000) {
 			display: none;
 		}
 
 		ul {
 			display: flex;
-			gap: $global-module-size;
 			font-size: rem(14);
-			padding-top: rem(5);
+			gap: $global-module-size;
 			padding-bottom: rem(5);
+			padding-top: rem(5);
 
 			a {
 				color: var(--theme-color-1);
@@ -36,39 +48,29 @@ $header-medium: 600;
 	&__languages {
 		display: none;
 
-		@include breakpoint(500) {
+		@include breakpoint(1000) {
 			display: flex;
 
 			select {
 				border: 1px solid var(--theme-color-4);
-				min-width: rem(120);
-				font-size: rem(14);
 				color: var(--text-color-4);
+				font-size: rem(14);
+				min-width: rem(120);
 			}
 		}
-	}
-
-	&__content {
-		@include content;
-		align-items: center;
-		flex-wrap: nowrap;
-		gap: $global-module-size;
-		height: 100%;
-		justify-content: space-between;
-		padding-bottom: $global-module-size;
-		padding-top: $global-module-size;
 	}
 
 	&__buttons {
 		align-items: center;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-end;
 		padding-left: $global-module-size;
 	}
 
 	&__logo {
 		align-items: center;
 		display: flex;
+		flex-basis: 200px;
 		height: 100%;
 		justify-content: center;
 		max-width: rem(200);
@@ -98,36 +100,45 @@ $header-medium: 600;
 	}
 
 	&__search-icon {
-		background-color: var(--theme-color-1);
-		border-radius: 50%;
-		color: var(--theme-color-4);
+		color: var(--text-color-4);
 		cursor: pointer;
-		font-size: rem(20);
-		padding: rem(8) rem(6);
-		transition: 0.15s linear;
+		font-size: rem(30);
+		transition: var(--theme-default-transition);
 
 		&:hover,
 		&:focus,
 		&:active {
-			background-color: var(--theme-color-2);
+			color: var(--theme-color-2);
+		}
+
+		@include breakpoint(1000) {
+			display: none;
 		}
 	}
 
 	&__search {
+		display: none;
+
+		@include breakpoint(1000) {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	&__search-mobile {
 		background-color: var(--theme-color-1);
 		box-shadow: var(--theme-box-shadow);
 		left: 0;
 		opacity: 0;
 		padding: rem(10) 0;
+		padding-bottom: rem(10);
+		padding-top: rem(10);
 		position: absolute;
 		top: 90%;
-		transition: 0.25s ease-in-out;
+		transition: var(--theme-default-transition);
 		visibility: hidden;
 		width: 100%;
-
-		&-content {
-			@include content;
-		}
 
 		&.is-visible {
 			opacity: 1;
@@ -135,39 +146,67 @@ $header-medium: 600;
 			visibility: visible;
 		}
 
-		&-form {
+		& .#{$layout-name}__search-form {
+			width: 100%;
+		}
+
+		@include breakpoint(1000) {
+			display: none;
+		}
+	}
+
+	&__search-form {
+		border: 1px solid var(--theme-color-4);
+		display: flex;
+		flex-direction: row;
+		height: rem(50);
+		min-width: rem(300);
+		position: relative;
+
+		@include breakpoint(1200) {
+			min-width: rem(400);
+		}
+
+		label {
+			width: 100%;
+		}
+
+		input {
+			border: 0;
 			display: flex;
-			flex-direction: column;
-			gap: rem(5);
+			font-family: $font-family-1;
+			height: 100%;
 			width: 100%;
 
-			@include breakpoint($header-medium) {
-				display: grid;
-				grid-template-columns: calc(100% - 150px) 150px;
+			&:focus,
+			&:active {
+				border: 0;
+				outline: 1px solid var(--theme-color-1);
 			}
+		}
+	}
 
-			input[type="search"],
-			select {
-				background-color: #fff;
-				border: 1px solid #fff;
-				color: var(--text-color-1);
-				height: 100%;
-				outline: 0;
-				padding: rem(20);
+	&__search-button {
+		background-color: #fff;
+		border: 1px solid var(--theme-color-4);
+		border: 0;
+		color: var(--theme-color-4);
+		cursor: pointer;
+		font-family: var(--font-family-1);
+		font-weight: 700;
+		height: 100%;
+		padding: rem(10);
+		position: absolute;
+		right: 0;
+		text-transform: uppercase;
+		transition: var(--theme-default-transition);
+		width: fit-content;
 
-				&::placeholder {
-					color: var(--text-color-1);
-				}
-
-				&:focus,
-				&:active {
-					border-color: var(--theme-color-3);
-				}
-			}
-
-			.c-button {
-				width: 100%;
-			}
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: var(--theme-color-1);
+			color: #fff;
 		}
 	}
 }
