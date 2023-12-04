@@ -3,22 +3,39 @@ get_header();
 
 global $wp_query;
 
+$current_language = get_locale();
+
+$title = $wp_query->found_posts . ' resultados para "' . get_search_query();
+$titleNoResults = 'Nenhum resultado encontrado para "' . get_search_query() . '"';;
+$subtitleNoResults = "Tente refazer a pesquisa usando outros termos";
+
+if ($current_language === 'en_US') {
+  $title = $wp_query->found_posts . ' results for "' . get_search_query();
+  $titleNoResults = 'No results found for "' . get_search_query() . '"';
+  $subtitleNoResults = "Try refining your search using different terms";
+} elseif ($current_language === 'es_ES') {
+  $title = $wp_query->found_posts . ' resultados para "' . get_search_query();
+  $titleNoResults = 'Ningún resultado encontrado para "' . get_search_query() . '"';
+  $subtitleNoResults = "Intenta refinar tu búsqueda usando otros términos";
+}
+
 ?>
-
-<main class="l-single" id='content'>
-  <header class="l-single__header">
-    <?php
-    if ($wp_query->found_posts == 0) {
-      echo '<h1 class="l-single__title"> Nenhum resultado encontrado para "' . get_search_query() . '"</h1>';
-      echo '<p class=s"l-single__subtitle">Tente refazer a pesquisa usando outros termos</p>';
-    } else {
-      echo '<h1 class="l-single__title">' . $wp_query->found_posts . ' resultados para "' . get_search_query() . '"</h1>';
-    }
-    ?>
-  </header>
-
-  <div class="l-page__archive">
-    <section class="l-page-home__posts">
+<div class="l-page__grid">
+  <?php
+  require 'template-parts/post-menu.php';
+  ?>
+  <main class="l-single" id='content'>
+    <header class="l-page__header">
+      <?php
+      if ($wp_query->found_posts == 0) {
+        echo '<h1 class="l-page__title">' . $titleNoResults . '</h1>';
+        echo '<p class=s"l-page__subtitle">' . $subtitleNoResults . '</p>';
+      } else {
+        echo '<h1 class="l-page__title">' . $title . '"</h1>';
+      }
+      ?>
+    </header>
+    <section class="l-page__archive">
       <h1 class="screen-readers-only">Posts</h1>
       <?php
       wp_reset_query();
@@ -50,16 +67,10 @@ global $wp_query;
           theme_custom_pagination($the_query);
           ?>
         </div>
-
-      <?php
-      else : ?>
-        <div class="c-trigger">
-          <p>Desculpe, nenhum post foi encontrado.</p>
-        </div>
       <?php endif; ?>
     </section>
-  </div>
-</main>
+  </main>
+</div>
 
 <?php
 get_footer();

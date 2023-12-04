@@ -19,10 +19,6 @@ const searchButton: NodeListOf<HTMLElement> | null =
   document.querySelectorAll(".js-search-button");
 const searchBar: HTMLElement | null = document.getElementById("searchMobile");
 
-
-console.log(searchButton);
-console.log(searchBar);
-
 if (searchButton && searchBar) {
   searchButton.forEach((button) =>
     button.addEventListener("click", (e: Event) => {
@@ -31,3 +27,22 @@ if (searchButton && searchBar) {
     })
   );
 }
+
+const subMenusMobile: NodeListOf<HTMLElement> | null =
+  document.querySelectorAll(".js-submenu-item");
+
+
+
+if (subMenusMobile) {
+  subMenusMobile.forEach((menu) => {
+    const menuLink = menu.querySelector(".js-submenu-link");
+    const subMenu = menu.querySelector(".js-submenu");
+    if(menuLink && subMenu){
+      menuLink.addEventListener("click", () => {
+        menuLink.classList.toggle("is-submenu-open");
+        subMenu.classList.toggle("is-submenu-open");
+      });
+    }
+  });
+}
+

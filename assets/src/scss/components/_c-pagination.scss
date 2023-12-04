@@ -1,0 +1,79 @@
+$component-name: c-pagination;
+
+:root {
+	--pagination-color: var(--theme-color-1);
+	--pagination-active-color: var(--theme-color-1);
+	--pagination-hover-color: var(--theme-color-2);
+}
+
+.#{$component-name} {
+	align-items: center;
+	display: inline-flex;
+	gap: rem(5);
+	justify-content: center;
+	padding: $global-module-size * 2 0;
+	width: 100%;
+
+	.page-numbers {
+		background-color: inherit;
+		border: 1px solid;
+		border-color: var(--theme-color-1);
+		color: var(--pagination-color);
+		padding: rem(7) rem(14);
+		transition: 0.15s linear;
+
+		&:not(.current):hover,
+		&:not(.current):focus,
+		&:not(.current):active {
+			border: 1px solid var(--pagination-hover-color);
+			color: var(--pagination-hover-color);
+			outline: none;
+
+			&::before,
+			&::after {
+				border-color: var(--pagination-hover-color);
+			}
+		}
+
+		&.current {
+			background-color: var(--pagination-active-color);
+			border-color: var(--pagination-active-color);
+			color: #fff;
+		}
+
+		&.prev,
+		&.next {
+			align-items: center;
+			display: flex;
+			justify-self: flex-start;
+
+			&::after,
+			&::before {
+				border-color: var(--pagination-color);
+				//outline:1px solid red;
+				border-style: solid;
+				border-width: 0 1px 1px 0;
+				display: inline-flex;
+				height: rem(10);
+				transition: 0.15s linear;
+				width: rem(10);
+			}
+		}
+
+		&.prev {
+			&::before {
+				content: "";
+				margin-right: rem(10);
+				transform: rotate(135deg);
+			}
+		}
+
+		&.next {
+			&::after {
+				content: "";
+				margin-left: rem(10);
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}

@@ -1,39 +1,15 @@
 $layout-name: l-single;
 
 .#{$layout-name} {
-	padding-top: rem(100);
-
-	&__content {
-		display: flex;
-		flex: 0 1 auto;
-		flex-direction: row;
-		flex-wrap: wrap;
-		font-size: rem(18);
-		line-height: rem(26);
-		margin: 0 5%;
-		max-width: 90%;
-
-		&--404 {
-			text-align: center;
-
-			.l-page__title {
-				text-align: center;
-				width: 100%;
-			}
-		}
-
-		@include breakpoint(600) {
-			margin: 0 10%;
-			max-width: 80%;
-		}
-
-		@include breakpoint(1500) {
-			margin: 0 auto;
-			max-width: $global-max-width;
-		}
+	@include breakpoint(800) {
+		border-radius: rem(15);
+		box-shadow: var(--theme-box-shadow);
+		padding-bottom: $global-module-size* 2;
+		padding-left: $global-module-size * 2;
+		padding-right: $global-module-size* 2;
 	}
 
-	&__post-content {
+	&__content {
 		width: 100%;
 
 		p {

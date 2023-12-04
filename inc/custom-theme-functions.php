@@ -1,6 +1,5 @@
 <?php
 //Formulário de pesquisa
-
 function renderSearchForm()
 {
   $current_language = get_locale();
@@ -27,6 +26,16 @@ function renderSearchForm()
 
   return $html;
 }
+
+//Resumir texto
+function summarizeText($text, $charactersLimit = 180)
+{
+  if (strlen($text) > $charactersLimit) {
+    $text = str_replace(array("<strong>", "</strong>"), '', substr($text, 0, $charactersLimit)) . ' [...]';
+  }
+  return $text;
+}
+
 //Retorna todas as categoria
 function list_categories()
 {
@@ -49,6 +58,7 @@ function list_categories()
     if ($categoria_translated_id && !in_array($categoria_translated_id, $categorias_adicionadas)) {
       $categoria_translated = get_term($categoria_translated_id);
       $categoria_completa = array(
+        'id' => $categoria_translated->term_id,
         'nome'       => $categoria_translated->name,
         'link'       => get_category_link($categoria_translated_id),
         'descricao'  => $categoria_translated->description,
@@ -65,7 +75,33 @@ function list_categories()
   return $categorias_completas;
 }
 
+//Retorna todos os posts pelo ID da categoria
+function get_posts_by_category($category_id)
+{
+  $args = array(
+    'category' => $category_id,
+    'numberposts' => -1,
+    'orderby' => 'date',
+    'order' => 'ASC',
+  );
 
+  $posts = get_posts($args);
+  $posts_array = array();
+
+  foreach ($posts as $post) {
+    $post_id = $post->ID;
+    $post_title = $post->post_title;
+    $post_link = get_permalink($post_id);
+
+    $posts_array[] = array(
+      'id' => $post_id,
+      'title' => $post_title,
+      'link' => $post_link,
+    );
+  }
+
+  return $posts_array;
+}
 
 // Retorna redes sociais
 function theme_social_networks()
@@ -74,7 +110,6 @@ function theme_social_networks()
   if (!isset($page_home_id)) :
     $page_home_id = get_option('page_on_front');
   endif;
-
 
   $html = '';
   $html .= '<ul class="c-social">';
