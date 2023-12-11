@@ -3,7 +3,9 @@ get_header();
 
 global $wp_query;
 
-$current_language = get_locale();
+if (!isset($current_language)) {
+  $current_language = get_locale();
+}
 
 $title = $wp_query->found_posts . ' resultados para "' . get_search_query();
 $titleNoResults = 'Nenhum resultado encontrado para "' . get_search_query() . '"';;
@@ -51,7 +53,7 @@ if ($current_language === 'en_US') {
         'orderby' => 'post-date'
       );
 
-      $the_query = new WP_Query($args); //Create our new custom query
+      $the_query = new WP_Query($args);
       if ($the_query->have_posts()) :
 
         while ($the_query->have_posts()) :
@@ -59,9 +61,6 @@ if ($current_language === 'en_US') {
           require 'template-parts/post-card.php';
         endwhile;
       ?>
-
-
-
         <div class="c-pagination">
           <?php
           theme_custom_pagination($the_query);

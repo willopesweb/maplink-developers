@@ -2,7 +2,9 @@
 //Formulário de pesquisa
 function renderSearchForm()
 {
-  $current_language = get_locale();
+  if (!isset($current_language)) {
+    $current_language = get_locale();
+  }
 
   $placeholder = "Digite aqui o que você procura";
   $label = "Pesquisar por:";
@@ -15,8 +17,7 @@ function renderSearchForm()
     $label = "Buscar por:";
   }
 
-  $html = '';
-  $html .= '<form role="search" method="get" class="l-header__search-form" action="' . esc_url(home_url('/')) . '">';
+  $html = '<form role="search" method="get" class="l-header__search-form" action="' . esc_url(home_url('/')) . '">';
   $html .= '<label>';
   $html .= '<span class="screen-reader-text">' . $label . '</span>';
   $html .= '<input required type="search" class="search-field" placeholder="' . $placeholder . '" value="' . get_search_query() . '" name="s" />';
@@ -39,35 +40,29 @@ function summarizeText($text, $charactersLimit = 180)
 //Retorna todas as categoria
 function list_categories()
 {
-  $current_language = pll_current_language();
-
-  global $wpdb;
-
-  $term_taxonomy_table = $wpdb->prefix . 'term_taxonomy';
-
-  $categorias_ids = $wpdb->get_col(
-    "SELECT term_taxonomy_id FROM $term_taxonomy_table WHERE taxonomy = 'category'"
+  $args = array(
+    'taxonomy' => 'category',
+    'hide_empty' => false,
   );
 
+  $categories_query = new WP_Term_Query($args);
   $categorias_completas = array();
-  $categorias_adicionadas = array();
 
-  foreach ($categorias_ids as $categoria_id) {
-    $categoria_translated_id = pll_get_term($categoria_id, $current_language);
-
-    if ($categoria_translated_id && !in_array($categoria_translated_id, $categorias_adicionadas)) {
-      $categoria_translated = get_term($categoria_translated_id);
+  if ($categories_query->terms) {
+    foreach ($categories_query->terms as $categoria_translated) {
       $categoria_completa = array(
         'id' => $categoria_translated->term_id,
-        'nome'       => $categoria_translated->name,
-        'link'       => get_category_link($categoria_translated_id),
-        'descricao'  => $categoria_translated->description,
-        'icone'      => get_field('icone', 'category_' . $categoria_translated->term_id),
+        'nome' => $categoria_translated->name,
+        'link' => get_category_link($categoria_translated),
+        'descricao' => $categoria_translated->description,
+        'icone' => get_field('icone', 'category_' . $categoria_translated->term_id),
       );
 
-      if (($categoria_completa["nome"] !== "Uncategorized") && ($categoria_completa["nome"] !== "Sem categoria")) {
+      if (
+        $categoria_completa["nome"] !== "Uncategorized" &&
+        $categoria_completa["nome"] !== "Sem categoria"
+      ) {
         $categorias_completas[] = $categoria_completa;
-        $categorias_adicionadas[] = $categoria_translated_id;
       }
     }
   }
@@ -79,29 +74,40 @@ function list_categories()
 function get_posts_by_category($category_id)
 {
   $args = array(
-    'category' => $category_id,
-    'numberposts' => -1,
+    'cat' => $category_id,
+    'posts_per_page' => -1,
     'orderby' => 'date',
     'order' => 'ASC',
   );
 
-  $posts = get_posts($args);
+  $query = new WP_Query($args);
   $posts_array = array();
 
-  foreach ($posts as $post) {
-    $post_id = $post->ID;
-    $post_title = $post->post_title;
-    $post_link = get_permalink($post_id);
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
 
-    $posts_array[] = array(
-      'id' => $post_id,
-      'title' => $post_title,
-      'link' => $post_link,
-    );
+      $post_id = get_the_ID();
+      $post_title = get_the_title();
+      $post_link = get_permalink();
+
+      $posts_array[] = array(
+        'id' => $post_id,
+        'title' => $post_title,
+        'link' => $post_link,
+      );
+    }
+
+    wp_reset_query();
+    wp_reset_postdata();
+    rewind_posts(); // Restaura o loop global
   }
+
 
   return $posts_array;
 }
+
+
 
 // Retorna redes sociais
 function theme_social_networks()

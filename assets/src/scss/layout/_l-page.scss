@@ -9,7 +9,6 @@ $layout-name: l-page;
 		align-items: center;
 		display: flex;
 		flex-direction: column;
-		gap: $global-module-size;
 		justify-content: center;
 		padding: $global-module-size * 2 0;
 		text-align: center;
@@ -23,20 +22,31 @@ $layout-name: l-page;
 		font-weight: 500;
 	}
 
+	&__subtitle {
+		margin-top: $global-module-size;
+		font-size: rem(18);
+	}
+
 	&__grid {
 		@include content("grid");
 		min-height: 70vh;
-		padding-top: $global-module-size * 2;
 
 		.l-menu {
 			display: none;
 		}
 
 		@include breakpoint(800) {
-			grid-template-columns: 250px calc(100% - 250px);
+			grid-template-columns: 300px calc(100% - 300px);
+			padding-top: $global-module-size * 2;
 
 			.l-menu {
 				display: flex;
+				grid-column: 1;
+				grid-row: 1;
+			}
+
+			.l-single {
+				grid-column: 2;
 			}
 		}
 	}

@@ -40,6 +40,7 @@ if (subMenusMobile) {
     if(menuLink && subMenu){
       menuLink.addEventListener("click", () => {
         menuLink.classList.toggle("is-submenu-open");
+        menuLink.classList.toggle("is-active");
         subMenu.classList.toggle("is-submenu-open");
       });
     }

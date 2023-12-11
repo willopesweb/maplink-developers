@@ -9,6 +9,10 @@ endif;
 if (!isset($image_dir)) :
   $image_dir = get_stylesheet_directory_uri() . '/' . ASSETS_DIR . '/img';
 endif;
+
+if (!isset($current_language)) {
+  $current_language = get_locale();
+}
 ?>
 
 <main class="l-home__main" id="content">
@@ -25,7 +29,7 @@ endif;
 </main>
 
 <section class="l-home__apis">
-  <h1 class="screen-readers-only">Nossas APIs</h1>
+  <h1 class="screen-readers-only">Maplink Platform APIs</h1>
   <?php
   $categories = list_categories();
   foreach ($categories as $categoria_completa) {

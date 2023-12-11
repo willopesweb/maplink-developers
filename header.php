@@ -1,12 +1,33 @@
 <?php
+if (!isset($page_home_id)) :
+  $page_home_id = get_option('page_on_front');
+endif;
+
 if (!isset($image_dir)) :
   $image_dir = get_stylesheet_directory_uri() . '/' . ASSETS_DIR . '/img';
 endif;
 
-$search_placeholder = ""
+if (!isset($current_language)) {
+  $current_language = get_locale();
+}
+
+$skip = "Pular para o conteúdo";
+$home_link = ["Documentação", "Retornar para a página inicial da documentação"];
+$support_link = ["Suporte", "Tire suas dúvidas ou fale conosco"];
+
+if ($current_language === 'en_US') {
+  $skip = "Skip for the content";
+  $home_link = ["Documentation", "Return to documentation home page"];
+  $support_link = ["Support", "Check our FAQ or contact us"];
+} elseif ($current_language === 'es_ES') {
+  $skip = "Saltar al contenido";
+  $home_link = ["Documentación", "Volver a la página de inicio de documentación"];
+  $support_link = ["Soporte", "Consulte las preguntas frecuentes o contáctenos"];
+}
+
 ?>
 <!DOCTYPE html>
-<html lang="<?= get_locale() ?>">
+<html lang="<?= $current_language ?>">
 
 <head>
   <meta charset="UTF-8">
@@ -20,9 +41,7 @@ $search_placeholder = ""
 </head>
 
 <body <?php body_class(); ?>>
-  <div id="skip"><a href="#content">Pular para o Conteúdo</a></div>
-
-
+  <div id="skip"><a href="#content"><?= $skip ?></a></div>
   <header id="header" class="l-header" role="banner">
     <?php
     if (function_exists('pll_the_languages')) {
@@ -57,8 +76,18 @@ $search_placeholder = ""
       <nav id="nav" class="c-nav js-mobile-menu" role="navigation">
         <h1 class="screen-readers-only">Menu Principal</h1>
         <ul>
-          <li class="c-nav__link js-link-scroll"><a href="#">Documentação</a></li>
-          <li class="c-nav__link js-link-scroll"><a href="#">Suporte</a></li>
+          <li class="c-nav__link" title="">
+            <a href="<?= get_home_url() ?>" title="<?= $home_link[1] ?>">
+              <?= $home_link[0] ?></a>
+          </li>
+          <li class="c-nav__link" title="<?= $support_link[1] ?>">
+            <a href="<?= get_field("link_suporte", $page_home_id) ?>">
+              <?= $support_link[0] ?>
+            </a>
+          </li>
+          <?php
+          //require 'template-parts/post-menu.php';
+          ?>
         </ul>
       </nav>
 

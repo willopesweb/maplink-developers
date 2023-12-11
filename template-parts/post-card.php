@@ -6,10 +6,10 @@ apply_filters('excerpt_length', 10); // Diminui o tamanho do resumo
     <header class="c-post__header">
       <span class="c-post__categorie"><?= get_the_category()[0]->name ?></span>
       <h2 class="c-post__title">
-        <?php echo the_title(); ?>
+        <?= the_title(); ?>
       </h2>
       <p class="c-post__subtitle">
-        <?php echo summarizeText(get_the_excerpt()) ?>
+        <?= summarizeText(get_the_excerpt()) ?>
       </p>
     </header>
   </a>

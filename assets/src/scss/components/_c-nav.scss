@@ -19,11 +19,19 @@ $component-name: c-nav;
 			box-shadow: var(--theme-box-shadow);
 			transform: translate3d(0, 0, 0);
 		}
+
+		.l-menu {
+			padding: 0;
+		}
 	}
 
 	@include breakpoint(950) {
 		display: flex;
 		justify-content: center;
+
+		.l-menu {
+			display: none;
+		}
 	}
 
 	& > ul {
@@ -43,7 +51,7 @@ $component-name: c-nav;
 		align-items: center;
 		color: var(--text-color-4);
 		display: flex;
-		font-size: rem(14);
+		font-size: rem(16);
 		font-weight: 400;
 		justify-content: center;
 		width: fit-content;
