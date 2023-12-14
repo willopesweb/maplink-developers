@@ -40,7 +40,7 @@ if (!isset($current_language)) {
             <header class="c-post__header">
               <span class="l-single__related__prev"><?= $prev_title ?></span>
               <?php
-              $prev_category = get_the_category($next_post->ID);
+              $prev_category = get_the_category($previous_post->ID);
               if (!empty($prev_category)) {
               ?>
                 <span class="c-post__categorie"><?= esc_html($prev_category[0]->name); ?></span>
@@ -83,7 +83,7 @@ if (!isset($current_language)) {
     </div>
   </main>
   <?php
-  require 'template-parts/post-menu.php';
+  categoriesMenu();
   ?>
 </div>
 

@@ -15,3 +15,4 @@ add_action('wp_enqueue_scripts', 'theme_css');
 require "inc/custom-admin-login.php";
 //require "inc/performance.php";
 require "inc/custom-theme-functions.php";
+require "inc/menu-categories.php";

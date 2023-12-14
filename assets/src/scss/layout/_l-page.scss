@@ -23,12 +23,13 @@ $layout-name: l-page;
 	}
 
 	&__subtitle {
-		margin-top: $global-module-size;
 		font-size: rem(18);
+		margin-top: $global-module-size;
 	}
 
 	&__grid {
 		@include content("grid");
+		grid-template-columns: 100%;
 		min-height: 70vh;
 
 		.l-menu {
@@ -36,7 +37,7 @@ $layout-name: l-page;
 		}
 
 		@include breakpoint(800) {
-			grid-template-columns: 300px calc(100% - 300px);
+			grid-template-columns: 200px calc(100% - 200px);
 			padding-top: $global-module-size * 2;
 
 			.l-menu {
@@ -48,6 +49,10 @@ $layout-name: l-page;
 			.l-single {
 				grid-column: 2;
 			}
+		}
+
+		@include breakpoint(950) {
+			grid-template-columns: 300px calc(100% - 300px);
 		}
 	}
 

@@ -25,7 +25,7 @@ if ($current_language === 'en_US') {
     </header>
   </main>
   <?php
-  require 'template-parts/post-menu.php';
+  categoriesMenu();
   ?>
 </div>
 

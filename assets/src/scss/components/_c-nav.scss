@@ -7,7 +7,7 @@ $component-name: c-nav;
 		border-right: 1px solid var(--theme-color-4);
 		height: 100%;
 		left: 0;
-		padding: $global-module-size * 2;
+		padding: $global-module-size;
 		position: fixed;
 		top: 0;
 		transform: translate3d(-300px, 0, 0);

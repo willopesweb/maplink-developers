@@ -50,22 +50,33 @@ function list_categories()
 
   if ($categories_query->terms) {
     foreach ($categories_query->terms as $categoria_translated) {
+      $ordem_raw = get_field('ordem', 'category_' . $categoria_translated->term_id);
+
+      // Se o valor for nulo, substitui por 99
+      $ordem = is_numeric($ordem_raw) ? intval($ordem_raw) : 99;
+
       $categoria_completa = array(
         'id' => $categoria_translated->term_id,
         'nome' => $categoria_translated->name,
         'link' => get_category_link($categoria_translated),
         'descricao' => $categoria_translated->description,
         'icone' => get_field('icone', 'category_' . $categoria_translated->term_id),
+        'ordem' => $ordem,
       );
 
       if (
         $categoria_completa["nome"] !== "Uncategorized" &&
-        $categoria_completa["nome"] !== "Sem categoria"
+        $categoria_completa["nome"] !== "Sem categoria" &&
+        $categoria_completa["nome"] !== "Sin categoría"
       ) {
         $categorias_completas[] = $categoria_completa;
       }
     }
   }
+
+  usort($categorias_completas, function ($a, $b) {
+    return intval($a['ordem']) - intval($b['ordem']);
+  });
 
   return $categorias_completas;
 }

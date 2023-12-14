@@ -54,6 +54,7 @@ $header-medium: 600;
 			select {
 				border: 1px solid var(--theme-color-4);
 				color: var(--text-color-4);
+				font-family: $font-family-1;
 				font-size: rem(14);
 				min-width: rem(120);
 			}
@@ -139,6 +140,7 @@ $header-medium: 600;
 		transition: var(--theme-default-transition);
 		visibility: hidden;
 		width: 100%;
+		z-index: 1;
 
 		&.is-visible {
 			opacity: 1;

@@ -14,15 +14,19 @@ if (!isset($current_language)) {
 $skip = "Pular para o conteúdo";
 $home_link = ["Documentação", "Retornar para a página inicial da documentação"];
 $support_link = ["Suporte", "Tire suas dúvidas ou fale conosco"];
+$collection_link = ["Collection", "Confira a collection com exemplos para testar"];
+
 
 if ($current_language === 'en_US') {
   $skip = "Skip for the content";
   $home_link = ["Documentation", "Return to documentation home page"];
   $support_link = ["Support", "Check our FAQ or contact us"];
+  $collection_link = ["Collection", "Check out our collection with examples to test"];
 } elseif ($current_language === 'es_ES') {
   $skip = "Saltar al contenido";
   $home_link = ["Documentación", "Volver a la página de inicio de documentación"];
   $support_link = ["Soporte", "Consulte las preguntas frecuentes o contáctenos"];
+  $collection_link = ["Collection", "Consulte la colleciton con ejemplos para probar."];
 }
 
 ?>
@@ -80,14 +84,19 @@ if ($current_language === 'en_US') {
             <a href="<?= get_home_url() ?>" title="<?= $home_link[1] ?>">
               <?= $home_link[0] ?></a>
           </li>
+          <?php
+          categoriesMenu(false);
+          ?>
           <li class="c-nav__link" title="<?= $support_link[1] ?>">
-            <a href="<?= get_field("link_suporte", $page_home_id) ?>">
+            <a href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $support_link[1] ?>">
               <?= $support_link[0] ?>
             </a>
           </li>
-          <?php
-          //require 'template-parts/post-menu.php';
-          ?>
+          <li class="c-nav__link " title="<?= $support_link[1] ?>">
+            <a class="c-button" href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $collection_link[1] ?>">
+              <?= $collection_link[0] ?>
+            </a>
+          </li>
         </ul>
       </nav>
 

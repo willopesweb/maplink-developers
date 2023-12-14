@@ -24,7 +24,7 @@ if ($current_language === 'en_US') {
 ?>
 <div class="l-page__grid">
   <?php
-  require 'template-parts/post-menu.php';
+  categoriesMenu();
   ?>
   <main class="l-single" id='content'>
     <header class="l-page__header">

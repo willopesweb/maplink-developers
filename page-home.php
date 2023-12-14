@@ -31,6 +31,12 @@ if (!isset($current_language)) {
 <section class="l-home__apis">
   <h1 class="screen-readers-only">Maplink Platform APIs</h1>
   <?php
+  $access_text = "Acessar documentação";
+  if ($current_language === 'en_US') {
+    $access_text = "Access documentation";
+  } elseif ($current_language === 'es_ES') {
+    $access_text = "Acceder a la documentación";
+  }
   $categories = list_categories();
   foreach ($categories as $categoria_completa) {
   ?>
@@ -43,7 +49,7 @@ if (!isset($current_language)) {
       </header>
       <p class="l-home__api-description"><?= $categoria_completa['descricao'] ?></p>
       <a class="l-home__api-link" href="<?= $categoria_completa['link'] ?>" title="Acessar a documentação da <?= $categoria_completa['nome'] ?>">
-        Acessar documentação
+        <?= $access_text ?>
       </a>
     </article>
   <?php
