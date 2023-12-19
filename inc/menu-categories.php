@@ -24,7 +24,12 @@ function categoriesMenu($showPosts = true)
         echo '</span>';
       }
 
-      echo '<p>' . $categoryName . '</p>';
+      if ($showPosts === true) {
+        echo '<p>' . $categoryName . '</p>';
+      } else {
+        echo '<a style="width: 100%;" href="' . $categoria_completa['link'] . '">' . $categoryName . '</a>';
+      }
+
       echo '</span>';
 
       if ($showPosts === true) {

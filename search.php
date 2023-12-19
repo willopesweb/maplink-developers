@@ -31,7 +31,7 @@ if ($current_language === 'en_US') {
       <?php
       if ($wp_query->found_posts == 0) {
         echo '<h1 class="l-page__title">' . $titleNoResults . '</h1>';
-        echo '<p class=s"l-page__subtitle">' . $subtitleNoResults . '</p>';
+        echo '<p class="l-page__subtitle">' . $subtitleNoResults . '</p>';
       } else {
         echo '<h1 class="l-page__title">' . $title . '"</h1>';
       }
@@ -40,30 +40,15 @@ if ($current_language === 'en_US') {
     <section class="l-page__archive">
       <h1 class="screen-readers-only">Posts</h1>
       <?php
-      wp_reset_query();
-      $paged = get_query_var('paged', 1);
-      $s = get_search_query();
-
-      $args = array(
-        's' => $s,
-        'post_type' => 'post',
-        'posts_per_page' => '10',
-        'paged' => $paged,
-        'order' => 'DESC',
-        'orderby' => 'post-date'
-      );
-
-      $the_query = new WP_Query($args);
-      if ($the_query->have_posts()) :
-
-        while ($the_query->have_posts()) :
-          $the_query->the_post();
-          require 'template-parts/post-card.php';
+      if (have_posts()) :
+        while (have_posts()) :
+          the_post();
+          get_template_part('template-parts/post', 'card');
         endwhile;
       ?>
         <div class="c-pagination">
           <?php
-          theme_custom_pagination($the_query);
+          theme_custom_pagination();
           ?>
         </div>
       <?php endif; ?>
@@ -73,3 +58,4 @@ if ($current_language === 'en_US') {
 
 <?php
 get_footer();
+?>

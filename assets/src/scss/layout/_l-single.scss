@@ -108,7 +108,8 @@ $layout-name: l-single;
 			font-size: rem(16);
 		}
 
-		ul {
+		ul,
+		ol {
 			list-style: initial;
 			margin-bottom: $global-module-size;
 			overflow-wrap: break-word;

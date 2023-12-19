@@ -159,6 +159,20 @@ function theme_custom_pagination($query = null)
 
   $current = get_query_var('page') ? get_query_var('page') : get_query_var('paged');
 
+  if (!isset($current_language)) {
+    $current_language = get_locale();
+  }
+
+  $next = "Próximo";
+  $previous = "Anterior";
+
+  if ($current_language === 'en_US') {
+    $next = "Next";
+    $previous = "Previous";
+  }
+
+
+
 
   echo paginate_links(array(
     'base'         => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
@@ -170,8 +184,8 @@ function theme_custom_pagination($query = null)
     'end_size'     => 2,
     'mid_size'     => 1,
     'prev_next'    => true,
-    'prev_text'    => sprintf('<i></i> %1$s', __('Anterior', 'text-domain')),
-    'next_text'    => sprintf('%1$s <i></i>', __('Próximo', 'text-domain')),
+    'prev_text'    => sprintf('<i></i> %1$s', $next),
+    'next_text'    => sprintf('%1$s <i></i>', $previous),
     'add_args'     => false,
     'add_fragment' => '',
   ));
