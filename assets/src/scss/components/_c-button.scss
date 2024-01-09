@@ -18,6 +18,25 @@ $component-name: c-button;
 	}
 }
 
+@mixin c-button--secondary {
+	background-color: var(--theme-color-1);
+	border: 0;
+	border-radius: rem(4);
+	color: #fff !important;
+	cursor: pointer;
+	padding: rem(10) !important;
+	transition: var(--theme-default-transition);
+	width: fit-content;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: var(--theme-color-3);
+		color: #fff !important;
+	}
+}
+
+
 .#{$component-name} {
 	@include c-button;
 }

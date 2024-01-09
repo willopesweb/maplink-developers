@@ -1,5 +1,10 @@
 $layout-name: l-header;
+$header-height: rem(80);
 $header-medium: 600;
+
+body.is-header-fixed {
+	margin-top: $header-height;
+}
 
 .#{$layout-name} {
 	@include container;
@@ -7,12 +12,23 @@ $header-medium: 600;
 	border-bottom: 1px solid var(--theme-color-4);
 	position: relative;
 
+	&.is-fixed {
+		//background: red;
+		animation: fadeInDown 0.5s forwards;
+		left: 0;
+		position: fixed;
+		top: 0;
+		transform: translate3d(0, -100%, 0);
+		width: 100%;
+	}
+
+
 	&__content {
 		@include content;
 		align-items: center;
 		flex-wrap: nowrap;
 		gap: $global-module-size;
-		height: 100%;
+		height: $header-height;
 		justify-content: space-between;
 		padding-bottom: $global-module-size;
 		padding-top: $global-module-size;

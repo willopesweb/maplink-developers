@@ -129,3 +129,5 @@ if ($current_language === 'en_US') {
       </div>
     </div>
   </header>
+
+  <div id="js-back-to-top" class="c-backtotop"><span>↑</span></div>

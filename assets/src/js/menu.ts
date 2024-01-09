@@ -31,13 +31,11 @@ if (searchButton && searchBar) {
 const subMenusMobile: NodeListOf<HTMLElement> | null =
   document.querySelectorAll(".js-submenu-item");
 
-
-
 if (subMenusMobile) {
   subMenusMobile.forEach((menu) => {
     const menuLink = menu.querySelector(".js-submenu-link");
     const subMenu = menu.querySelector(".js-submenu");
-    if(menuLink && subMenu){
+    if (menuLink && subMenu) {
       menuLink.addEventListener("click", () => {
         menuLink.classList.toggle("is-submenu-open");
         menuLink.classList.toggle("is-active");
@@ -46,4 +44,3 @@ if (subMenusMobile) {
     }
   });
 }
-

@@ -1,15 +1,30 @@
-export function handleScroll(this: Window) {
+const backToTop: HTMLElement | null = document.getElementById("js-back-to-top");
+let lastScrollTop = 0;
+
+export function handleScroll(this: Window): void {
   const header: HTMLElement | null = document.getElementById("header");
   if (!header) return;
-
   const scrollTop = document.documentElement.scrollTop;
-  if (scrollTop > 60) {
-    header.classList.add("is-fixed");
-    document.body.classList.add("is-header-fixed");
-  } else {
+
+  if (scrollTop > lastScrollTop) {
     header.classList.remove("is-fixed");
     document.body.classList.remove("is-header-fixed");
+    if (backToTop) backToTop.classList.remove("is-visible");
+  } else {
+    if (scrollTop < 200) {
+      header.classList.remove("is-fixed");
+      document.body.classList.remove("is-header-fixed");
+
+      if (backToTop) backToTop.classList.remove("is-visible");
+    } else {
+      header.classList.add("is-fixed");
+      document.body.classList.add("is-header-fixed");
+
+      if (backToTop) backToTop.classList.add("is-visible");
+    }
   }
+
+  lastScrollTop = scrollTop;
 }
 
 export function activateMenuItem() {

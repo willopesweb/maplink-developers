@@ -6,12 +6,14 @@
 
 @import "base/reset";
 @import "base/helpers";
+@import "base/u-animations";
 
 @import "components/c-button";
 @import "components/c-nav";
 @import "components/c-post";
 @import "components/c-pagination";
 @import "components/c-social";
+@import "components/c-backtotop";
 
 @import "layout/l-header";
 @import "layout/l-page";
