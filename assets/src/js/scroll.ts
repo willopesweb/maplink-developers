@@ -1,25 +1,37 @@
 const backToTop: HTMLElement | null = document.getElementById("js-back-to-top");
 let lastScrollTop = 0;
 
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
 export function handleScroll(this: Window): void {
   const header: HTMLElement | null = document.getElementById("header");
   if (!header) return;
   const scrollTop = document.documentElement.scrollTop;
 
   if (scrollTop > lastScrollTop) {
-    header.classList.remove("is-fixed");
-    document.body.classList.remove("is-header-fixed");
+    if (scrollTop > 100) {
+      header.classList.add("is-fixed");
+      document.body.classList.add("is-header-fixed");
+    }
+    header.classList.remove("is-visible");
     if (backToTop) backToTop.classList.remove("is-visible");
   } else {
     if (scrollTop < 200) {
       header.classList.remove("is-fixed");
+      header.classList.remove("is-visible");
       document.body.classList.remove("is-header-fixed");
 
       if (backToTop) backToTop.classList.remove("is-visible");
     } else {
-      header.classList.add("is-fixed");
+      header.classList.add("is-visible");
       document.body.classList.add("is-header-fixed");
-
       if (backToTop) backToTop.classList.add("is-visible");
     }
   }

@@ -46,27 +46,28 @@ if ($current_language === 'en_US') {
 
 <body <?php body_class(); ?>>
   <div id="skip"><a href="#content"><?= $skip ?></a></div>
-  <header id="header" class="l-header" role="banner">
-    <?php
-    if (function_exists('pll_the_languages')) {
-      $languages = pll_the_languages(array('raw' => 1));
-      if (count($languages) > 1) {
-        echo '<div class="l-header__languages-mobile">';
-        echo '<div class="l-page__content">';
-        echo '<ul id="language-selector">';
-        foreach ($languages as $language) {
-          echo '<li>';
-          echo '<a title="' . $language['name'] . '" href="' . esc_url($language['url']) . '">';
-          echo esc_html($language['name']);
-          echo '</a>';
-          echo '</li>';
-        }
-        echo '</ul>';
-        echo '</div>';
-        echo '</div>';
+  <?php
+  if (function_exists('pll_the_languages')) {
+    $languages = pll_the_languages(array('raw' => 1));
+    if (count($languages) > 1) {
+      echo '<div class="l-header__languages-mobile">';
+      echo '<div class="l-page__content">';
+      echo '<ul id="language-selector">';
+      foreach ($languages as $language) {
+        echo '<li>';
+        echo '<a title="' . $language['name'] . '" href="' . esc_url($language['url']) . '">';
+        echo esc_html($language['name']);
+        echo '</a>';
+        echo '</li>';
       }
+      echo '</ul>';
+      echo '</div>';
+      echo '</div>';
     }
-    ?>
+  }
+  ?>
+  <header id="header" class="l-header" role="banner">
+
     <div class="l-header__content">
       <a class="l-header__logo" href="<?= get_site_url() ?>">
         <h1 class="screen-readers-only"><?php wp_title('|'); ?></h1>

@@ -1,5 +1,5 @@
 $layout-name: l-header;
-$header-height: rem(80);
+$header-height: 80px;
 $header-medium: 600;
 
 body.is-header-fixed {
@@ -13,15 +13,21 @@ body.is-header-fixed {
 	position: relative;
 
 	&.is-fixed {
-		//background: red;
-		animation: fadeInDown 0.5s forwards;
 		left: 0;
+		opacity: 0;
 		position: fixed;
-		top: 0;
-		transform: translate3d(0, -100%, 0);
+		top: ($header-height + 1) * -1;
+		transform: translate3d(0, 0, 0);
+		transition: 0.25s all ease;
+		visibility: hidden;
 		width: 100%;
 	}
 
+	&.is-visible {
+		opacity: 1;
+		transform: translate3d(0, 100%, 0);
+		visibility: visible;
+	}
 
 	&__content {
 		@include content;
