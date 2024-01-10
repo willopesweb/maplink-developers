@@ -21,6 +21,7 @@ body.is-header-fixed {
 		transition: 0.25s all ease;
 		visibility: hidden;
 		width: 100%;
+		z-index: z-index("fixed-header");
 	}
 
 	&.is-visible {

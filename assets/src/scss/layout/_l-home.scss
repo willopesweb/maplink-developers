@@ -52,10 +52,19 @@ $layout-name: l-home;
 
 		@include breakpoint(600) {
 			grid-template-columns: 1fr 1fr;
+
+			.#{$layout-name}__api:first-of-type {
+				grid-column: 1 / 3;
+			}
+
 		}
 
 		@include breakpoint(800) {
 			grid-template-columns: 1fr 1fr 1fr;
+
+			.#{$layout-name}__api:first-of-type {
+				grid-column: 1 / 4;
+			}
 		}
 	}
 

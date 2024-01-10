@@ -40,7 +40,7 @@ if ($current_language === 'en_US') {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <title><?php bloginfo('name'); ?><?php wp_title('|'); ?></title>
+  <title><?php the_title() ?> | <?php bloginfo('name'); ?></title>
   <?php wp_head(); ?>
 </head>
 
@@ -94,7 +94,7 @@ if ($current_language === 'en_US') {
             </a>
           </li>
           <li class="c-nav__link " title="<?= $support_link[1] ?>">
-            <a class="c-button" href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $collection_link[1] ?>">
+            <a class="c-button" href="<?= get_field("link_collection", $page_home_id) ?>" title="<?= $collection_link[1] ?>">
               <?= $collection_link[0] ?>
             </a>
           </li>

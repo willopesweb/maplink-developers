@@ -4,6 +4,7 @@ const mobileMenu = document.querySelector(".js-mobile-menu");
 if (mobileBtn && mobileMenu) {
   mobileBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("is-open");
+    document.body.classList.toggle("body-locked");
   });
 
   const links = mobileMenu.querySelectorAll(".js-link-scroll");
