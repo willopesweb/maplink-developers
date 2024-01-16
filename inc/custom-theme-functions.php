@@ -17,7 +17,7 @@ function renderSearchForm()
     $label = "Buscar por:";
   }
 
-  $html = '<form role="search" method="get" class="l-header__search-form" action="' . esc_url(home_url('/')) . '">';
+  $html = '<form role="search" method="get" class="l-header__search-form">';
   $html .= '<label>';
   $html .= '<span class="screen-reader-text">' . $label . '</span>';
   $html .= '<input required type="search" class="search-field" placeholder="' . $placeholder . '" value="' . get_search_query() . '" name="s" />';

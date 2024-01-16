@@ -72,8 +72,16 @@ $mobile-menu: 950;
 		width: fit-content;
 
 		a {
+			align-items: center;
+			display: flex;
+			//flex-direction: row-reverse;
 			padding: rem(2);
 			transition: var(--theme-default-transition);
+
+			&::before {
+				font-size: rem(20);
+				margin-left: 0;
+			}
 
 			&:hover,
 			&:focus,

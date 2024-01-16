@@ -1,7 +1,8 @@
 @font-face {
   font-family: "fontello";
   src: url("./icons/fontello.eot");
-  src: url("./icons/fontello.eot#iefix") format("embedded-opentype"),
+  src:
+    url("./icons/fontello.eot#iefix") format("embedded-opentype"),
     url("./icons/fontello.woff2") format("woff2"),
     url("./icons/fontello.woff") format("woff"),
     url("./icons/fontello.ttf") format("truetype"),
@@ -21,9 +22,7 @@
   }
   */
 [class^="icon-"]:before,
-[class^="icon-"]:after,
-[class*=" icon-"]:before,
-[class*=" icon-"]:after {
+[class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
@@ -61,39 +60,33 @@
 .icon-search:before {
   content: "\e800";
 } /* '' */
-.icon-user:before {
-  content: "\e801";
-} /* '' */
 .icon-mail:before {
   content: "\e802";
 } /* '' */
-.icon-menu:before {
+.icon-location:before {
   content: "\e803";
 } /* '' */
-.icon-location:before {
-  content: "\f031";
-} /* '' */
-.icon-twitter:before {
-  content: "\f099";
-} /* '' */
+.icon-phone:before {
+  content: "\e804";
+} /* '' */
+.icon-menu:before {
+  content: "\f008";
+} /* '' */
 .icon-facebook:before {
   content: "\f09a";
 } /* '' */
+.icon-github:before {
+  content: "\f09b";
+} /* '' */
 .icon-linkedin:before {
   content: "\f0e1";
 } /* '' */
 .icon-youtube:before {
-  content: "\f167";
-} /* '' */
+  content: "\f16a";
+} /* '' */
 .icon-instagram:before {
   content: "\f16d";
 } /* '' */
 .icon-whatsapp:before {
   content: "\f232";
 } /* '' */
-
-.icon-whatsapp2:after {
-  content: "\f232";
-  padding-left: 5px;
-  font-size: 20px;
-}

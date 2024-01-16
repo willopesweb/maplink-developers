@@ -89,12 +89,12 @@ if ($current_language === 'en_US') {
           categoriesMenu(false);
           ?>
           <li class="c-nav__link" title="<?= $support_link[1] ?>">
-            <a href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $support_link[1] ?>">
+            <a target="_blank" href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $support_link[1] ?>">
               <?= $support_link[0] ?>
             </a>
           </li>
           <li class="c-nav__link " title="<?= $support_link[1] ?>">
-            <a class="c-button" href="<?= get_field("link_collection", $page_home_id) ?>" title="<?= $collection_link[1] ?>">
+            <a target="_blank" rel="nofollow" class="icon-github" href="<?= get_field("link_collection", $page_home_id) ?>" title="<?= $collection_link[1] ?>">
               <?= $collection_link[0] ?>
             </a>
           </li>

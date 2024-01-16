@@ -7,7 +7,10 @@ $component-name: c-social;
 	& a {
 		color: inherit;
 		font-size: rem(20);
-		transition: var(--theme-default-transition);
+
+		&::before {
+			transition: var(--theme-default-transition);
+		}
 
 		/*  &.icon-facebook::before,
     &.icon-twitter::before {
@@ -26,6 +29,10 @@ $component-name: c-social;
 
 		&.icon-youtube:hover::before {
 			color: social-media-color("youtube");
+		}
+
+		&.icon-linkedin::before {
+			padding-bottom: 4px;
 		}
 
 		&.icon-linkedin:hover::before {

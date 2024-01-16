@@ -42,9 +42,10 @@ html {
 }
 
 body.logged-in.admin-bar {
-	margin-top: -46px;
+	padding-top: -46px;
+
 	@include breakpoint(782) {
-		margin-top: -32px;
+		padding-top: -32px;
 	}
 }
 
