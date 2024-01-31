@@ -29,6 +29,15 @@ if ($current_language === 'en_US') {
   $collection_link = ["Collection", "Consulte la colleciton con ejemplos para probar."];
 }
 
+$search_query = get_search_query();
+if (isset($search_query) && !empty($search_query)) {
+  $title = 'Pesquisa por: "' . esc_html(get_search_query()) . '"';
+} else if (is_archive()) {
+  $title = get_the_category()[0]->name;
+} else {
+  $title = get_the_title();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="<?= $current_language ?>">
@@ -40,7 +49,7 @@ if ($current_language === 'en_US') {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <title><?php is_archive() ? single_cat_title() : the_title() ?> | <?php bloginfo('name'); ?></title>
+  <title><?= $title ?> | <?php bloginfo('name'); ?></title>
   <?php wp_head(); ?>
 </head>
 
@@ -67,7 +76,6 @@ if ($current_language === 'en_US') {
   }
   ?>
   <header id="header" class="l-header" role="banner">
-
     <div class="l-header__content">
       <a class="l-header__logo" href="<?= get_site_url() ?>">
         <h1 class="screen-readers-only"><?php wp_title('|'); ?></h1>
