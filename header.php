@@ -40,7 +40,7 @@ if ($current_language === 'en_US') {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <title><?php the_title() ?> | <?php bloginfo('name'); ?></title>
+  <title><?php is_archive() ? single_cat_title() : the_title() ?> | <?php bloginfo('name'); ?></title>
   <?php wp_head(); ?>
 </head>
 

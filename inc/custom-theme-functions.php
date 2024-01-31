@@ -31,8 +31,6 @@ function renderSearchForm()
 //Resumir texto
 function summarizeText($text, $charactersLimit = 180)
 {
-  header('Content-Type: text/html; charset=utf-8');
-
   if (mb_strlen($text, 'UTF-8') > $charactersLimit) {
     $text = str_replace(array("<strong>", "</strong>"), '', mb_substr($text, 0, $charactersLimit, 'UTF-8')) . ' [...]';
   }
