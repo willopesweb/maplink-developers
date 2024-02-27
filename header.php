@@ -56,16 +56,16 @@ if (isset($search_query) && !empty($search_query)) {
 <body <?php body_class(); ?>>
   <div id="skip"><a href="#content"><?= $skip ?></a></div>
   <?php
-  if (function_exists('pll_the_languages')) {
-    $languages = pll_the_languages(array('raw' => 1));
-    if (count($languages) > 1) {
+  if (function_exists('icl_get_languages')) {
+    $languages = icl_get_languages('skip_missing=0&orderby=code');
+    if (!empty($languages)) {
       echo '<div class="l-header__languages-mobile">';
       echo '<div class="l-page__content">';
       echo '<ul id="language-selector">';
       foreach ($languages as $language) {
         echo '<li>';
-        echo '<a title="' . $language['name'] . '" href="' . esc_url($language['url']) . '">';
-        echo esc_html($language['name']);
+        echo '<a title="' . $language['native_name'] . '" href="' . esc_url($language['url']) . '">';
+        echo esc_html($language['native_name']);
         echo '</a>';
         echo '</li>';
       }
@@ -77,8 +77,8 @@ if (isset($search_query) && !empty($search_query)) {
   ?>
   <header id="header" class="l-header" role="banner">
     <div class="l-header__content">
-      <a class="l-header__logo" href="<?= get_site_url() ?>">
-        <h1 class="screen-readers-only"><?php wp_title('|'); ?></h1>
+      <a class="l-header__logo" href="<?= home_url() ?>">
+        <h1 class="screen-readers-only"><?= $title; ?></h1>
         <img src="<?= get_stylesheet_directory_uri() . '/' . ASSETS_DIR ?>/img/logo.svg" alt="<?php wp_title('|'); ?>">
       </a>
 
@@ -111,16 +111,16 @@ if (isset($search_query) && !empty($search_query)) {
 
       <div class="l-header__buttons">
         <?php
-        if (function_exists('pll_the_languages')) {
-          $languages = pll_the_languages(array('raw' => 1));
+        if (function_exists('icl_get_languages')) {
+          $languages = icl_get_languages('skip_missing=0&orderby=code');
           if (count($languages) > 1) {
             echo '<div class="l-header__languages">';
             echo '<select onchange="location = this.value;" name="language">';
             foreach ($languages as $language) {
               echo '<option value="' . esc_url($language['url']) . '" ';
-              echo selected($language['current_lang'], 1, false);
+              echo selected($language['active'], 1, false);
               echo '>';
-              echo esc_html($language['name']);
+              echo esc_html($language['native_name']);
               echo '</option>';
             }
             echo '</select>';
@@ -128,6 +128,7 @@ if (isset($search_query) && !empty($search_query)) {
           }
         }
         ?>
+
         <span class="icon-search js-search-button l-header__search-icon"></span>
         <span class="icon-menu js-mobile-btn mobile-icon"></span>
       </div>

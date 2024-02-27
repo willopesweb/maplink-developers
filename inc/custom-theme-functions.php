@@ -2,6 +2,8 @@
 //Formulário de pesquisa
 function renderSearchForm()
 {
+  global $wp;
+
   if (!isset($current_language)) {
     $current_language = get_locale();
   }
@@ -17,10 +19,13 @@ function renderSearchForm()
     $label = "Buscar por:";
   }
 
-  $html = '<form role="search" method="get" class="l-header__search-form">';
+  // Obter a consulta de pesquisa atual da URL
+  $search_query = isset($wp->query_vars['s']) ? $wp->query_vars['s'] : '';
+
+  $html = '<form role="search" method="get" class="l-header__search-form" action="' . esc_url(home_url('/')) . '">';
   $html .= '<label>';
   $html .= '<span class="screen-reader-text">' . $label . '</span>';
-  $html .= '<input required type="search" class="search-field" placeholder="' . $placeholder . '" value="' . get_search_query() . '" name="s" />';
+  $html .= '<input required type="search" class="search-field" placeholder="' . $placeholder . '" value="' . $search_query . '" name="s" />';
   $html .= '</label>';
   $html .= '<button class="l-header__search-button icon-search" type="submit"></button>';
   $html .= '</form>';
@@ -69,7 +74,8 @@ function list_categories()
       if (
         $categoria_completa["nome"] !== "Uncategorized" &&
         $categoria_completa["nome"] !== "Sem categoria" &&
-        $categoria_completa["nome"] !== "Sin categoría"
+        $categoria_completa["nome"] !== "Sin categoría" &&
+        $categoria_completa["nome"] !== "Sin categorizar"
       ) {
         $categorias_completas[] = $categoria_completa;
       }

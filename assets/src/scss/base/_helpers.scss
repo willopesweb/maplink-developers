@@ -41,11 +41,15 @@ html {
 	display: none;
 }
 
+.wpml-ls {
+	display: none;
+}
+
 body.logged-in.admin-bar {
-	padding-top: -46px;
+	margin-top: -46px;
 
 	@include breakpoint(782) {
-		padding-top: -32px;
+		margin-top: -32px;
 	}
 }
 

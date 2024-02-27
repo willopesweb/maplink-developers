@@ -9,7 +9,7 @@ $layout-name: l-single;
 		padding-right: $global-module-size* 2;
 	}
 
-	@include breakpoint(1000) {
+	@include breakpoint(1200) {
 		padding-bottom: $global-module-size* 4;
 		padding-left: $global-module-size * 4;
 		padding-right: $global-module-size* 4;
@@ -149,6 +149,10 @@ $layout-name: l-single;
 			border-radius: rem(10);
 			color: #fff;
 			padding: $global-module-size;
+
+			code {
+				background-color: transparent;
+			}
 
 			p {
 				margin-bottom: 0;
