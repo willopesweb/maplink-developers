@@ -1,6 +1,7 @@
 $layout-name: l-header;
 $header-height: 80px;
 $header-medium: 600;
+$desktop: 1200;
 
 body.is-header-fixed {
 	margin-top: $header-height;
@@ -44,7 +45,7 @@ body.is-header-fixed {
 	&__languages-mobile {
 		border-bottom: 1px solid var(--theme-color-4);
 
-		@include breakpoint(1000) {
+		@include breakpoint($desktop) {
 			display: none;
 		}
 
@@ -71,7 +72,7 @@ body.is-header-fixed {
 	&__languages {
 		display: none;
 
-		@include breakpoint(1000) {
+		@include breakpoint($desktop) {
 			display: flex;
 
 			select {
@@ -135,7 +136,7 @@ body.is-header-fixed {
 			color: var(--theme-color-2);
 		}
 
-		@include breakpoint(1000) {
+		@include breakpoint($desktop) {
 			display: none;
 		}
 	}
@@ -143,7 +144,7 @@ body.is-header-fixed {
 	&__search {
 		display: none;
 
-		@include breakpoint(1000) {
+		@include breakpoint($desktop) {
 			align-items: center;
 			display: flex;
 			justify-content: center;
@@ -175,7 +176,7 @@ body.is-header-fixed {
 			width: 100%;
 		}
 
-		@include breakpoint(1000) {
+		@include breakpoint($desktop) {
 			display: none;
 		}
 	}

@@ -12,21 +12,24 @@ if (!isset($current_language)) {
 }
 
 $skip = "Pular para o conteúdo";
-$home_link = ["Documentação", "Retornar para a página inicial da documentação"];
+$home_link = ["Institucional", "Página Institucional da Maplink"];
 $support_link = ["Suporte", "Tire suas dúvidas ou fale conosco"];
 $collection_link = ["Collection", "Confira a collection com exemplos para testar"];
+$status_link = ["Status", "Confira o status de nossos serviços"];
 
 
 if ($current_language === 'en_US') {
   $skip = "Skip for the content";
-  $home_link = ["Documentation", "Return to documentation home page"];
-  $support_link = ["Support", "Check our FAQ or contact us"];
+  $home_link = ["Institutional", "Maplink Institutional Pag"];
+  $support_link = ["Support", "Contact us about any problem or question"];
   $collection_link = ["Collection", "Check out our collection with examples to test"];
+  $status_link = ["Status", "Check the status of our services"];
 } elseif ($current_language === 'es_ES') {
   $skip = "Saltar al contenido";
   $home_link = ["Documentación", "Volver a la página de inicio de documentación"];
-  $support_link = ["Soporte", "Consulte las preguntas frecuentes o contáctenos"];
+  $support_link = ["Soporte", "Contáctanos para cualquier problema o pregunta."];
   $collection_link = ["Collection", "Consulte la colleciton con ejemplos para probar."];
+  $status_link = ["Status", "Confira el estado de nuestros servicios"];
 }
 
 $search_query = get_search_query();
@@ -89,21 +92,26 @@ if (isset($search_query) && !empty($search_query)) {
       <nav id="nav" class="c-nav js-mobile-menu" role="navigation">
         <h1 class="screen-readers-only">Menu Principal</h1>
         <ul>
-          <li class="c-nav__link" title="">
-            <a href="<?= get_home_url() ?>" title="<?= $home_link[1] ?>">
+          <li class="c-nav__link" title="<?= $home_link[0] ?>">
+            <a target="_blank" href="<?= get_home_url() ?>" title="<?= $home_link[1] ?>">
               <?= $home_link[0] ?></a>
           </li>
           <?php
           categoriesMenu(false);
           ?>
           <li class="c-nav__link" title="<?= $support_link[1] ?>">
-            <a target="_blank" href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $support_link[1] ?>">
+            <a target="_blank" rel="nofollow" href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $support_link[1] ?>">
               <?= $support_link[0] ?>
             </a>
           </li>
           <li class="c-nav__link " title="<?= $support_link[1] ?>">
             <a target="_blank" rel="nofollow" class="icon-github" href="<?= get_field("link_collection", $page_home_id) ?>" title="<?= $collection_link[1] ?>">
               <?= $collection_link[0] ?>
+            </a>
+          </li>
+          <li class="c-nav__link " title="<?= $status_link[1] ?>">
+            <a target="_blank" rel="nofollow" href="<?= get_field("link_collection", $page_home_id) ?>" title="<?= $status_link[1] ?>">
+              <?= $status_link[0] ?>
             </a>
           </li>
         </ul>
