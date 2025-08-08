@@ -7,7 +7,7 @@ $layout-name: c-post;
 	flex-direction: column;
 	gap: $global-module-size;
 	padding: $global-module-size;
-	transition: var(--theme-default-transition);
+	transition: var(--theme-transition);
 	width: 100%;
 
 	&:hover,
@@ -28,7 +28,7 @@ $layout-name: c-post;
 	&__title {
 		color: var(--theme-color-1);
 		font-size: rem(18);
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 	}
 
 	&__subtitle {

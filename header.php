@@ -53,6 +53,11 @@ if (isset($search_query) && !empty($search_query)) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <title><?= $title ?> | <?php bloginfo('name'); ?></title>
+  <meta property="og:title" content="<?= $title ?> | <?php bloginfo('name'); ?>" />
+  <meta property="og:description" content="<?= bloginfo('description'); ?>" />
+  <meta property="og:image" content="<?= $image_dir ?>/thumb.png" />
+  <meta property="og:url" content="<?= get_permalink(); ?>" />
+  <meta property="og:type" content="website" />
   <?php wp_head(); ?>
 </head>
 
@@ -110,7 +115,7 @@ if (isset($search_query) && !empty($search_query)) {
             </a>
           </li>
           <li class="c-nav__link " title="<?= $status_link[1] ?>">
-            <a target="_blank" rel="nofollow" href="<?= get_field("link_collection", $page_home_id) ?>" title="<?= $status_link[1] ?>">
+            <a target="_blank" rel="nofollow" href="<?= get_field("link_status", $page_home_id) ?>" title="<?= $status_link[1] ?>">
               <?= $status_link[0] ?>
             </a>
           </li>
@@ -149,3 +154,5 @@ if (isset($search_query) && !empty($search_query)) {
   </header>
 
   <div id="js-back-to-top" class="c-backtotop"><span>↑</span></div>
+
+  <?php echo do_shortcode('[aion-chat]'); ?>

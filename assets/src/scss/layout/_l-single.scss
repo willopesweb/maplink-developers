@@ -65,7 +65,7 @@ $layout-name: l-single;
 			display: flex;
 			font-weight: 700;
 			margin-bottom: rem(5);
-			transition: var(--theme-default-transition);
+			transition: var(--theme-transition);
 			width: 100%;
 		}
 
@@ -206,7 +206,7 @@ $layout-name: l-single;
 			color: var(--theme-color-1);
 			font-weight: 700;
 			text-decoration: underline;
-			transition: var(--theme-default-transition);
+			transition: var(--theme-transition);
 
 			&:hover {
 				color: var(--theme-color-2);

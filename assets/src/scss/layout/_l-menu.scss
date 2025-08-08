@@ -12,7 +12,7 @@ $layout-name: l-menu;
 		justify-content: space-between;
 		padding: rem(10);
 		position: relative;
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 		width: 100%;
 
 		p {
@@ -33,7 +33,7 @@ $layout-name: l-menu;
 				display: flex;
 				height: rem(8);
 				rotate: 44deg;
-				transition: var(--theme-default-transition);
+				transition: var(--theme-transition);
 				width: rem(8);
 			}
 		}
@@ -66,7 +66,7 @@ $layout-name: l-menu;
 			font-size: rem(14);
 			gap: rem(10);
 			padding: rem(10);
-			transition: var(--theme-default-transition);
+			transition: var(--theme-transition);
 			width: 100%;
 
 			&::before {

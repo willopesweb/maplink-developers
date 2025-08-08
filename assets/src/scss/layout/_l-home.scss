@@ -104,7 +104,7 @@ $layout-name: l-home;
 	&__api-link {
 		color: var(--theme-color-1);
 		font-weight: 500;
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 
 		&::after {
 			content: ">";

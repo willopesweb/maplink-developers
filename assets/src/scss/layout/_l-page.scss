@@ -17,7 +17,8 @@ $layout-name: l-page;
 
 	&__title {
 		color: inherit;
-		font-family: $font-family-1;
+		font-family: var(--theme-font-family);
+
 		font-size: rem(28);
 		font-weight: 500;
 	}

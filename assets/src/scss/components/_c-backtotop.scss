@@ -2,20 +2,19 @@ $component-name: c-backtotop;
 
 .#{$component-name} {
 	background-color: var(--theme-color-1);
-	border: 0;
 	border-radius: rem(4);
-	bottom: rem(50);
-	box-shadow: 0 0 5px #f5ecff;
+	bottom: rem(30);
+	box-shadow: 0 0 5px var(--theme-color-5);
 	color: #fff;
 	cursor: pointer;
 	display: grid;
 	font-size: rem(30);
 	height: rem(50);
+	left: rem(30);
 	opacity: 0;
 	place-items: center;
 	position: fixed;
-	right: rem(50);
-	transition: 0.25s all ease;
+	transition: var(--theme-transition);
 	visibility: hidden;
 	width: rem(50);
 
@@ -29,6 +28,10 @@ $component-name: c-backtotop;
 		opacity: 1;
 		visibility: visible;
 		z-index: z-index("back-to-top");
+	}
+
+	span {
+		padding-bottom: 5px;
 	}
 
 }

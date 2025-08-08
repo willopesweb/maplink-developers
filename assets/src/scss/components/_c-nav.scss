@@ -26,7 +26,7 @@ $mobile-menu: 950;
 		position: fixed;
 		top: 0;
 		transform: translate3d(-300px, 0, 0);
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 		width: 300px;
 		z-index: z-index("mobile-menu");
 
@@ -76,7 +76,7 @@ $mobile-menu: 950;
 			display: flex;
 			//flex-direction: row-reverse;
 			padding: rem(2);
-			transition: var(--theme-default-transition);
+			transition: var(--theme-transition);
 
 			&::before {
 				font-size: rem(20);

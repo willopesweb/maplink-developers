@@ -14,13 +14,13 @@
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    @font-face {
-      font-family: 'fontello';
-      src: url('../fonts/icons/../fonts/icons/fontello.svg#fontello') format('svg');
-    }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?79799983#fontello') format('svg');
   }
-  */
+}
+*/
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "fontello";
@@ -57,27 +57,33 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-search:before {
+.icon-location:before {
   content: "\e800";
 } /* '' */
-.icon-mail:before {
+.icon-search:before {
+  content: "\e801";
+} /* '' */
+.icon-phone:before {
   content: "\e802";
 } /* '' */
-.icon-location:before {
+.icon-reload:before {
   content: "\e803";
 } /* '' */
-.icon-phone:before {
+.icon-close:before {
   content: "\e804";
 } /* '' */
-.icon-menu:before {
-  content: "\f008";
-} /* '' */
-.icon-facebook:before {
-  content: "\f09a";
-} /* '' */
+.icon-minus:before {
+  content: "\e805";
+} /* '' */
 .icon-github:before {
   content: "\f09b";
 } /* '' */
+.icon-menu:before {
+  content: "\f0c9";
+} /* '' */
+.icon-mail:before {
+  content: "\f0e0";
+} /* '' */
 .icon-linkedin:before {
   content: "\f0e1";
 } /* '' */

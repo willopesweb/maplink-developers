@@ -7,7 +7,7 @@ $component-name: c-button;
 	color: #fff !important;
 	cursor: pointer;
 	padding: rem(10) !important;
-	transition: var(--theme-default-transition);
+	transition: var(--theme-transition);
 	width: fit-content;
 
 	&:hover,
@@ -25,7 +25,7 @@ $component-name: c-button;
 	color: #fff !important;
 	cursor: pointer;
 	padding: rem(10) !important;
-	transition: var(--theme-default-transition);
+	transition: var(--theme-transition);
 	width: fit-content;
 
 	&:hover,

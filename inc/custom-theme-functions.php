@@ -49,7 +49,7 @@ function list_categories()
 {
   $args = array(
     'taxonomy' => 'category',
-    'hide_empty' => false,
+    'hide_empty' => true,
   );
 
   $categories_query = new WP_Term_Query($args);

@@ -1,5 +1,5 @@
 :root {
-	--theme-color-1: #460087;
+	--theme-color-1: #6b339f;
 	--theme-color-2: #f2702a;
 	--theme-color-3: #5325ea;
 	--theme-color-4: #dacce7;
@@ -14,18 +14,17 @@
 	--main-text-color: --text-color-1;
 	--body-background-color: #fefefe;
 
-	--theme-box-shadow: 0 0 24px #f5ecff;
-	--theme-default-transition: 0.5s all ease;
+	--theme-font-family: "Montserrat", sans-serif;
+	--theme-box-shadow: 0 0 24px var(--theme-color-5);
+	--theme-transition: 0.5s all ease;
 }
-
-$font-family-1: "Montserrat", sans-serif;
-$font-family-2: "Montserrat", sans-serif;
 
 body {
 	background-color: var(--body-background-color);
 	color: var(--main-text-color);
 	font-display: swap;
-	font-family: $font-family-1;
+	font-family: var(--theme-font-family);
+
 }
 
 /*SOCIAL COLORS*/

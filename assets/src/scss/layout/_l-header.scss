@@ -58,7 +58,7 @@ body.is-header-fixed {
 
 			a {
 				color: var(--theme-color-1);
-				transition: var(--theme-default-transition);
+				transition: var(--theme-transition);
 
 				&:hover,
 				&:focus,
@@ -78,7 +78,8 @@ body.is-header-fixed {
 			select {
 				border: 1px solid var(--theme-color-4);
 				color: var(--text-color-4);
-				font-family: $font-family-1;
+				font-family: var(--theme-font-family);
+
 				font-size: rem(14);
 				min-width: rem(120);
 			}
@@ -111,7 +112,7 @@ body.is-header-fixed {
 		color: var(--text-color-4);
 		cursor: pointer;
 		font-size: rem(40);
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 
 		&:hover,
 		&:focus,
@@ -128,7 +129,7 @@ body.is-header-fixed {
 		color: var(--text-color-4);
 		cursor: pointer;
 		font-size: rem(30);
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 
 		&:hover,
 		&:focus,
@@ -161,7 +162,7 @@ body.is-header-fixed {
 		padding-top: rem(10);
 		position: absolute;
 		top: 90%;
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 		visibility: hidden;
 		width: 100%;
 		z-index: 1;
@@ -200,7 +201,8 @@ body.is-header-fixed {
 		input {
 			border: 0;
 			display: flex;
-			font-family: $font-family-1;
+			font-family: var(--theme-font-family);
+
 			height: 100%;
 			width: 100%;
 
@@ -225,7 +227,7 @@ body.is-header-fixed {
 		position: absolute;
 		right: 0;
 		text-transform: uppercase;
-		transition: var(--theme-default-transition);
+		transition: var(--theme-transition);
 		width: fit-content;
 
 		&:hover,

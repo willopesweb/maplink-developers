@@ -9,7 +9,7 @@ $component-name: c-social;
 		font-size: rem(20);
 
 		&::before {
-			transition: var(--theme-default-transition);
+			transition: var(--theme-transition);
 		}
 
 		/*  &.icon-facebook::before,
