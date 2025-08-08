@@ -155,4 +155,8 @@ if (isset($search_query) && !empty($search_query)) {
 
   <div id="js-back-to-top" class="c-backtotop"><span>↑</span></div>
 
-  <?php echo do_shortcode('[aion-chat]'); ?>
+  <?php
+  if (shortcode_exists('aion-chat')) {
+    echo do_shortcode('[aion-chat]');
+  }
+  ?>
