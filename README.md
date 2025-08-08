@@ -16,7 +16,8 @@ For this theme the following Wordpress plugins were used:
 <ul>
   <li>Advanced Custom Fields</li>
   <li>Enlighter - Customizable Syntax Highlighter</li>
-  <li>Polylang</li>
+  <li>WPML - The WordPress Multilingual Plugin</li>
 </ul>
+
 
 
