@@ -12,7 +12,7 @@ if (!isset($current_language)) {
 }
 
 $skip = "Pular para o conteúdo";
-$home_link = ["Institucional", "Página Institucional da Maplink"];
+$home_link = ["Institucional", "Página Institucional da Maplink Cloud"];
 $support_link = ["Suporte", "Tire suas dúvidas ou fale conosco"];
 $collection_link = ["Collection", "Confira a collection com exemplos para testar"];
 $status_link = ["Status", "Confira o status de nossos serviços"];
@@ -20,13 +20,13 @@ $status_link = ["Status", "Confira o status de nossos serviços"];
 
 if ($current_language === 'en_US') {
   $skip = "Skip for the content";
-  $home_link = ["Institutional", "Maplink Institutional Pag"];
+  $home_link = ["Institutional", "Maplink Cloud Institutional Page"];
   $support_link = ["Support", "Contact us about any problem or question"];
   $collection_link = ["Collection", "Check out our collection with examples to test"];
   $status_link = ["Status", "Check the status of our services"];
 } elseif ($current_language === 'es_ES') {
   $skip = "Saltar al contenido";
-  $home_link = ["Documentación", "Volver a la página de inicio de documentación"];
+  $home_link = ["Institucional", "Página institucional de Maplink Cloud"];
   $support_link = ["Soporte", "Contáctanos para cualquier problema o pregunta."];
   $collection_link = ["Collection", "Consulte la colleciton con ejemplos para probar."];
   $status_link = ["Status", "Confira el estado de nuestros servicios"];
@@ -98,7 +98,7 @@ if (isset($search_query) && !empty($search_query)) {
         <h1 class="screen-readers-only">Menu Principal</h1>
         <ul>
           <li class="c-nav__link" title="<?= $home_link[0] ?>">
-            <a target="_blank" href="<?= get_home_url() ?>" title="<?= $home_link[1] ?>">
+            <a target="_blank" href="https://maplink.global/" title="<?= $home_link[1] ?>">
               <?= $home_link[0] ?></a>
           </li>
           <?php
