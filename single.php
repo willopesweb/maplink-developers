@@ -17,10 +17,10 @@ if (!isset($current_language)) {
         <span class="l-single__categorie"><?= esc_html($main_category[0]->name); ?></span>
       <?php } ?>
 
-      <h1 class="l-page__title"><?= the_title(); ?></h1>
+      <h1 class="l-page__title"><?php the_title(); ?></h1>
     </header>
     <section class="l-single__content">
-      <?= the_content(); ?>
+      <?php the_content(); ?>
     </section>
     <div class="l-single__posts">
       <?php
@@ -63,7 +63,7 @@ if (!isset($current_language)) {
         }
       ?>
         <article>
-          <a class="c-post l-single__related next" href="<?= get_permalink($next_post->ID) ?>" title="<?= get_the_title($previous_post->ID) ?>">
+          <a class="c-post l-single__related next" href="<?= get_permalink($next_post->ID) ?>" title="<?= esc_attr(get_the_title($next_post->ID)) ?>">
             <header class="c-post__header">
               <span class="l-single__related__next"><?= $next_title ?></span>
               <?php

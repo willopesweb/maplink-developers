@@ -5,8 +5,14 @@ $component-name: c-social;
 	display: flex;
 
 	& a {
-		color: inherit;
+		align-items: center;
+		color: rgba(255, 255, 255, 0.6);
+		display: inline-flex;
 		font-size: rem(20);
+		justify-content: center;
+		min-height: 44px;
+		min-width: 44px;
+		transition: var(--theme-transition);
 
 		&::before {
 			transition: var(--theme-transition);

@@ -7,17 +7,18 @@ if (!isset($current_language)) {
   $current_language = get_locale();
 }
 
-$title = $wp_query->found_posts . ' resultados para "' . get_search_query();
-$titleNoResults = 'Nenhum resultado encontrado para "' . get_search_query() . '"';;
+$query_term = esc_html(get_search_query());
+$title = $wp_query->found_posts . ' resultados para &ldquo;' . $query_term . '&rdquo;';
+$titleNoResults = 'Nenhum resultado encontrado para &ldquo;' . $query_term . '&rdquo;';
 $subtitleNoResults = "Tente refazer a pesquisa usando outros termos";
 
 if ($current_language === 'en_US') {
-  $title = $wp_query->found_posts . ' results for "' . get_search_query();
-  $titleNoResults = 'No results found for "' . get_search_query() . '"';
+  $title = $wp_query->found_posts . ' results for &ldquo;' . $query_term . '&rdquo;';
+  $titleNoResults = 'No results found for &ldquo;' . $query_term . '&rdquo;';
   $subtitleNoResults = "Try refining your search using different terms";
 } elseif ($current_language === 'es_ES') {
-  $title = $wp_query->found_posts . ' resultados para "' . get_search_query();
-  $titleNoResults = 'Ningún resultado encontrado para "' . get_search_query() . '"';
+  $title = $wp_query->found_posts . ' resultados para &ldquo;' . $query_term . '&rdquo;';
+  $titleNoResults = 'Ningún resultado encontrado para &ldquo;' . $query_term . '&rdquo;';
   $subtitleNoResults = "Intenta refinar tu búsqueda usando otros términos";
 }
 
@@ -33,7 +34,7 @@ if ($current_language === 'en_US') {
         echo '<h1 class="l-page__title">' . $titleNoResults . '</h1>';
         echo '<p class="l-page__subtitle">' . $subtitleNoResults . '</p>';
       } else {
-        echo '<h1 class="l-page__title">' . $title . '"</h1>';
+        echo '<h1 class="l-page__title">' . $title . '</h1>';
       }
       ?>
     </header>

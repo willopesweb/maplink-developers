@@ -2,26 +2,28 @@ $component-name: c-backtotop;
 
 .#{$component-name} {
 	background-color: var(--theme-color-1);
-	border-radius: rem(4);
+	border: none;
+	border-radius: 9999px;
 	bottom: rem(30);
-	box-shadow: 0 0 5px var(--theme-color-5);
-	color: #fff;
+	box-shadow: var(--theme-box-shadow);
+	color: var(--text-color-2);
 	cursor: pointer;
 	display: grid;
-	font-size: rem(30);
-	height: rem(50);
-	left: rem(30);
+	font-size: rem(22);
+	height: rem(48);
 	opacity: 0;
 	place-items: center;
 	position: fixed;
+	right: rem(30);
 	transition: var(--theme-transition);
 	visibility: hidden;
-	width: rem(50);
+	width: rem(48);
 
 	&:hover,
 	&:focus,
 	&:active {
-		background-color: var(--theme-color-3);
+		background-color: var(--color-brand-purple-600);
+		transform: translateY(-2px);
 	}
 
 	&.is-visible {
@@ -31,7 +33,7 @@ $component-name: c-backtotop;
 	}
 
 	span {
-		padding-bottom: 5px;
+		line-height: 1;
 	}
 
 }

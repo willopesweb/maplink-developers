@@ -17,8 +17,8 @@ $mobile-menu: 950;
 .#{$component-name} {
 
 	@media screen and (max-width: #{$mobile-menu - 1}px) {
-		background-color: #fff;
-		border-right: 1px solid var(--theme-color-4);
+		background: linear-gradient(to bottom, rgba(24, 17, 41, 0.99) 0%, rgba(8, 6, 18, 1) 100%);
+		border-right: 1px solid rgba(255, 255, 255, 0.1);
 		height: 100vh;
 		left: 0;
 		overflow-y: auto;
@@ -64,19 +64,18 @@ $mobile-menu: 950;
 
 	&__link {
 		align-items: center;
-		color: var(--text-color-4);
 		display: flex;
-		font-size: rem(16);
-		font-weight: 400;
+		font-size: rem(15);
+		font-weight: 600;
 		justify-content: center;
 		width: fit-content;
 
 		a {
-			align-items: center;
-			display: flex;
-			//flex-direction: row-reverse;
-			padding: rem(2);
-			transition: var(--theme-transition);
+			border-radius: rem(8);
+			color: rgba(255, 255, 255, 0.75);
+			display: block;
+			padding: rem(8) rem(12);
+			transition: background-color 0.2s ease, color 0.2s ease;
 
 			&::before {
 				font-size: rem(20);
@@ -86,7 +85,8 @@ $mobile-menu: 950;
 			&:hover,
 			&:focus,
 			&:active {
-				color: var(--theme-color-2);
+				background-color: rgba(255, 255, 255, 0.08);
+				color: #fff;
 			}
 		}
 	}

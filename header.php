@@ -41,9 +41,13 @@ if (isset($search_query) && !empty($search_query)) {
   $title = get_the_title();
 }
 
+$lang_bcp47 = 'pt-BR';
+if ($current_language === 'en_US') $lang_bcp47 = 'en';
+elseif ($current_language === 'es_ES') $lang_bcp47 = 'es';
+
 ?>
 <!DOCTYPE html>
-<html lang="<?= $current_language ?>">
+<html lang="<?= esc_attr($lang_bcp47) ?>">
 
 <head>
   <meta charset="UTF-8">
@@ -51,7 +55,6 @@ if (isset($search_query) && !empty($search_query)) {
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <title><?= $title ?> | <?php bloginfo('name'); ?></title>
   <meta property="og:title" content="<?= $title ?> | <?php bloginfo('name'); ?>" />
   <meta property="og:description" content="<?= bloginfo('description'); ?>" />
@@ -62,6 +65,11 @@ if (isset($search_query) && !empty($search_query)) {
 </head>
 
 <body <?php body_class(); ?>>
+  <div class="bg-lights" aria-hidden="true">
+    <span class="bg-lights__orb bg-lights__orb--1"></span>
+    <span class="bg-lights__orb bg-lights__orb--2"></span>
+    <span class="bg-lights__orb bg-lights__orb--3"></span>
+  </div>
   <div id="skip"><a href="#content"><?= $skip ?></a></div>
   <?php
   if (function_exists('icl_get_languages')) {
@@ -85,17 +93,15 @@ if (isset($search_query) && !empty($search_query)) {
   ?>
   <header id="header" class="l-header" role="banner">
     <div class="l-header__content">
-      <a class="l-header__logo" href="<?= home_url() ?>">
-        <h1 class="screen-readers-only"><?= $title; ?></h1>
-        <img src="<?= get_stylesheet_directory_uri() . '/' . ASSETS_DIR ?>/img/logo.svg" alt="<?php wp_title('|'); ?>">
+      <a class="l-header__logo" href="<?= home_url() ?>" aria-label="Maplink Developers — página inicial">
+        <img src="<?= get_stylesheet_directory_uri() . '/' . ASSETS_DIR ?>/img/logo.webp" alt="Maplink Developers" fetchpriority="high" width="160" height="40">
       </a>
 
       <div class="l-header__search" id="search">
         <?= renderSearchForm() ?>
       </div>
 
-      <nav id="nav" class="c-nav js-mobile-menu" role="navigation">
-        <h1 class="screen-readers-only">Menu Principal</h1>
+      <nav id="nav" class="c-nav js-mobile-menu" role="navigation" aria-label="Menu principal">
         <ul>
           <li class="c-nav__link" title="<?= $home_link[0] ?>">
             <a target="_blank" href="https://maplink.global/" title="<?= $home_link[1] ?>">
@@ -128,7 +134,7 @@ if (isset($search_query) && !empty($search_query)) {
           $languages = icl_get_languages('skip_missing=0&orderby=code');
           if (count($languages) > 1) {
             echo '<div class="l-header__languages">';
-            echo '<select onchange="location = this.value;" name="language">';
+            echo '<select onchange="location = this.value;" name="language" aria-label="' . esc_attr__('Selecionar idioma', 'maplink-developers') . '">';
             foreach ($languages as $language) {
               echo '<option value="' . esc_url($language['url']) . '" ';
               echo selected($language['active'], 1, false);
@@ -140,20 +146,28 @@ if (isset($search_query) && !empty($search_query)) {
             echo '</div>';
           }
         }
-        ?>
 
-        <span class="icon-search js-search-button l-header__search-icon"></span>
-        <span class="icon-menu js-mobile-btn mobile-icon"></span>
+        $support_url = get_field("link_suporte", $page_home_id);
+        if ($support_url) :
+          $cta_label = $current_language === 'en_US' ? 'Contact us' : ($current_language === 'es_ES' ? 'Contáctenos' : 'Fale conosco');
+        ?>
+          <a class="c-button c-button--secondary l-header__cta" href="<?= esc_url($support_url) ?>" target="_blank" rel="nofollow noopener">
+            <?= esc_html($cta_label) ?>
+          </a>
+        <?php endif; ?>
+
+        <button type="button" class="icon-search js-search-button l-header__search-icon" aria-label="<?= $current_language === 'en_US' ? 'Open search' : ($current_language === 'es_ES' ? 'Abrir búsqueda' : 'Abrir busca') ?>" aria-expanded="false" aria-controls="searchMobile"></button>
+        <button type="button" class="icon-menu js-mobile-btn mobile-icon" aria-label="<?= $current_language === 'en_US' ? 'Open menu' : ($current_language === 'es_ES' ? 'Abrir menú' : 'Abrir menu') ?>" aria-expanded="false" aria-controls="nav"></button>
       </div>
     </div>
-    <div class="l-header__search-mobile" id="searchMobile">
+    <div class="l-header__search-mobile" id="searchMobile" aria-hidden="true">
       <div class="l-page__content">
         <?= renderSearchForm() ?>
       </div>
     </div>
   </header>
 
-  <div id="js-back-to-top" class="c-backtotop"><span>↑</span></div>
+  <button id="js-back-to-top" class="c-backtotop" aria-label="Voltar ao topo"><span>↑</span></button>
 
   <?php
   if (shortcode_exists('aion-chat')) {

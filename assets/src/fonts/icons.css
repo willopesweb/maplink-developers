@@ -7,6 +7,7 @@
     url("./icons/fontello.woff") format("woff"),
     url("./icons/fontello.ttf") format("truetype"),
     url("./icons/fontello.svg#fontello") format("svg");
+  font-display: swap;
   font-weight: normal;
   font-style: normal;
 }

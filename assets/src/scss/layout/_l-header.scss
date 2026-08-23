@@ -1,34 +1,25 @@
 $layout-name: l-header;
-$header-height: 80px;
+$header-height: 72px;
 $header-medium: 600;
 $desktop: 1200;
 
-body.is-header-fixed {
-	margin-top: $header-height;
-}
-
 .#{$layout-name} {
 	@include container;
-	background-color: #fff;
-	border-bottom: 1px solid var(--theme-color-4);
-	position: relative;
+	backdrop-filter: blur(24px) saturate(180%);
+	background: rgba(8, 6, 18, 0.6);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	left: 0;
+	position: sticky;
+	right: 0;
+	top: 0;
+	transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+	width: 100%;
+	z-index: z-index("fixed-header");
 
-	&.is-fixed {
-		left: 0;
-		opacity: 0;
-		position: fixed;
-		top: ($header-height + 1) * -1;
-		transform: translate3d(0, 0, 0);
-		transition: 0.25s all ease;
-		visibility: hidden;
-		width: 100%;
-		z-index: z-index("fixed-header");
-	}
-
-	&.is-visible {
-		opacity: 1;
-		transform: translate3d(0, 100%, 0);
-		visibility: visible;
+	&.is-scrolled {
+		backdrop-filter: blur(32px) saturate(200%);
+		background: rgba(8, 6, 18, 0.88);
+		border-bottom-color: rgba(255, 255, 255, 0.1);
 	}
 
 	&__content {
@@ -43,7 +34,7 @@ body.is-header-fixed {
 	}
 
 	&__languages-mobile {
-		border-bottom: 1px solid var(--theme-color-4);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
 		@include breakpoint($desktop) {
 			display: none;
@@ -57,13 +48,13 @@ body.is-header-fixed {
 			padding-top: rem(5);
 
 			a {
-				color: var(--theme-color-1);
+				color: rgba(255, 255, 255, 0.75);
 				transition: var(--theme-transition);
 
 				&:hover,
 				&:focus,
 				&:active {
-					color: var(--theme-color-2);
+					color: var(--text-color-2);
 				}
 			}
 		}
@@ -76,12 +67,18 @@ body.is-header-fixed {
 			display: flex;
 
 			select {
-				border: 1px solid var(--theme-color-4);
-				color: var(--text-color-4);
+				background-color: transparent;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 9999px;
+				color: rgba(255, 255, 255, 0.7);
 				font-family: var(--theme-font-family);
-
 				font-size: rem(14);
 				min-width: rem(120);
+
+				&:hover {
+					border-color: rgba(255, 255, 255, 0.5);
+					color: var(--text-color-2);
+				}
 			}
 		}
 	}
@@ -89,8 +86,16 @@ body.is-header-fixed {
 	&__buttons {
 		align-items: center;
 		display: flex;
+		gap: $global-module-size / 2;
 		justify-content: flex-end;
-		padding-left: $global-module-size;
+	}
+
+	&__cta {
+		display: none;
+
+		@include breakpoint($desktop) {
+			display: flex;
+		}
 	}
 
 	&__logo {
@@ -109,9 +114,17 @@ body.is-header-fixed {
 	}
 
 	.icon-menu {
-		color: var(--text-color-4);
+		align-items: center;
+		background: none;
+		border: none;
+		color: rgba(255, 255, 255, 0.75);
 		cursor: pointer;
+		display: inline-flex;
 		font-size: rem(40);
+		justify-content: center;
+		min-height: 44px;
+		min-width: 44px;
+		padding: 0;
 		transition: var(--theme-transition);
 
 		&:hover,
@@ -126,9 +139,17 @@ body.is-header-fixed {
 	}
 
 	&__search-icon {
-		color: var(--text-color-4);
+		align-items: center;
+		background: none;
+		border: none;
+		color: rgba(255, 255, 255, 0.75);
 		cursor: pointer;
+		display: inline-flex;
 		font-size: rem(30);
+		justify-content: center;
+		min-height: 44px;
+		min-width: 44px;
+		padding: 0;
 		transition: var(--theme-transition);
 
 		&:hover,
@@ -153,13 +174,11 @@ body.is-header-fixed {
 	}
 
 	&__search-mobile {
-		background-color: var(--theme-color-1);
+		background: linear-gradient(to bottom, rgba(24, 17, 41, 0.99) 0%, rgba(8, 6, 18, 1) 100%);
 		box-shadow: var(--theme-box-shadow);
 		left: 0;
 		opacity: 0;
 		padding: rem(10) 0;
-		padding-bottom: rem(10);
-		padding-top: rem(10);
 		position: absolute;
 		top: 90%;
 		transition: var(--theme-transition);
@@ -183,7 +202,8 @@ body.is-header-fixed {
 	}
 
 	&__search-form {
-		border: 1px solid var(--theme-color-4);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: rem(8);
 		display: flex;
 		flex-direction: row;
 		height: rem(50);
@@ -199,28 +219,32 @@ body.is-header-fixed {
 		}
 
 		input {
+			background-color: transparent;
 			border: 0;
+			color: var(--text-color-1);
 			display: flex;
 			font-family: var(--theme-font-family);
-
 			height: 100%;
 			width: 100%;
+
+			&::placeholder {
+				color: rgba(255, 255, 255, 0.4);
+			}
 
 			&:focus,
 			&:active {
 				border: 0;
-				outline: 1px solid var(--theme-color-1);
+				outline: 1px solid var(--theme-color-3);
 			}
 		}
 	}
 
 	&__search-button {
-		background-color: #fff;
-		border: 1px solid var(--theme-color-4);
+		background-color: transparent;
 		border: 0;
-		color: var(--theme-color-4);
+		color: rgba(255, 255, 255, 0.5);
 		cursor: pointer;
-		font-family: var(--font-family-1);
+		font-family: var(--theme-font-family);
 		font-weight: 700;
 		height: 100%;
 		padding: rem(10);
@@ -233,8 +257,7 @@ body.is-header-fixed {
 		&:hover,
 		&:focus,
 		&:active {
-			background-color: var(--theme-color-1);
-			color: #fff;
+			color: var(--theme-color-3);
 		}
 	}
 }

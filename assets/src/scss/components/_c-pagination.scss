@@ -1,7 +1,7 @@
 $component-name: c-pagination;
 
 :root {
-	--pagination-color: var(--theme-color-1);
+	--pagination-color: var(--theme-color-3);
 	--pagination-active-color: var(--theme-color-1);
 	--pagination-hover-color: var(--theme-color-2);
 }
@@ -15,9 +15,9 @@ $component-name: c-pagination;
 	width: 100%;
 
 	.page-numbers {
-		background-color: inherit;
-		border: 1px solid;
-		border-color: var(--theme-color-1);
+		background-color: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: rem(8);
 		color: var(--pagination-color);
 		padding: rem(7) rem(14);
 		transition: 0.15s linear;

@@ -25,13 +25,3 @@ $gutter: rem(20);
 		max-width: $global-max-width;
 	}
 }
-
-@mixin col($col, $total-col: 12) {
-	$width: (
-		(100% * $col) / $total-col
-	);
-	flex: 0 0 auto;
-	flex-basis: calc(#{$width} - #{$gutter});
-	margin: $gutter / 2;
-	max-width: calc(#{$width} - #{$gutter});
-}

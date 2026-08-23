@@ -16,11 +16,12 @@ add_filter('login_headertext', 'my_login_logo_url_title');
 function theme_custom_login_logo()
 {
   echo '<style type="text/css">
+  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
   :root{
-    --login-background-color: #fff;
-    --login-font-family: "Montserrat", sans-serif;
-    --button-background-color:#460087;
-    --button-hover-color: #F2702A;
+    --login-background-color: #1c1c1c;
+    --login-font-family: "Outfit", sans-serif;
+    --button-background-color: #4b007f;
+    --button-hover-color: #ff6700;
     --button-font-color: #fff;
   }
 
@@ -41,13 +42,29 @@ function theme_custom_login_logo()
     background-color: var(--login-background-color);
   }
 
+  .login label,
+  .login input,
+  .login #nav,
+  .login #backtoblog {
+    font-family: var(--login-font-family) !important;
+    color: #f2f2f2 !important;
+  }
+
+  .login input[type="text"],
+  .login input[type="password"] {
+    background-color: rgba(255,255,255,0.07) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    border-radius: 0.5rem !important;
+    color: #f2f2f2 !important;
+  }
+
   .button {
     border: none !important;
-    border-radius: 0.5rem;
+    border-radius: 9999px;
     cursor: pointer;
     font-family: var(--login-font-family);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     outline: 0;
     padding: 0.625rem 1.5625rem;
     text-align: center;

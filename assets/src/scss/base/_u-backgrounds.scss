@@ -1,0 +1,137 @@
+/* Grid texture overlay — exact values from maplink.global/pt-BR/platform */
+body::before {
+	background-image:
+		linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px);
+	background-size: 56px 56px;
+	content: "";
+	inset: 0;
+	mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%);
+	opacity: 0.045;
+	pointer-events: none;
+	position: fixed;
+	z-index: 0;
+}
+
+/* Drift animations — extracted from maplink.global source */
+@keyframes orb-drift-a {
+	0%, to {
+		transform: translate(0);
+	}
+	30% {
+		transform: translate(18px, -22px);
+	}
+	65% {
+		transform: translate(-14px, 16px);
+	}
+}
+
+@keyframes orb-drift-b {
+	0%, to {
+		transform: translate(0);
+	}
+	40% {
+		transform: translate(-22px, 18px);
+	}
+	75% {
+		transform: translate(16px, -12px);
+	}
+}
+
+@keyframes orb-drift-c {
+	0%, to {
+		transform: translate(0);
+	}
+	25% {
+		transform: translate(12px, 20px);
+	}
+	60% {
+		transform: translate(-18px, -10px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.icon-float {
+		animation: none;
+	}
+}
+
+/* Ambient light orbs — exact positions/sizes/colors from maplink.global/pt-BR/platform */
+.bg-lights {
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	position: fixed;
+	z-index: 0;
+
+	&__orb {
+		border-radius: 50%;
+		display: block;
+		position: absolute;
+	}
+
+	/* Orb 1 — top-right: rgb(246,137,64) → #f57c2b */
+	&__orb--1 {
+		animation: 18s ease-in-out infinite orb-drift-a;
+		background: radial-gradient(circle, rgb(246, 137, 64) 0%, #f57c2b 60%, transparent 78%);
+		filter: blur(110px);
+		height: clamp(254px, 56vw, 580px);
+		mix-blend-mode: screen;
+		opacity: 0.48;
+		right: -3%;
+		top: 5%;
+		width: clamp(280px, 62vw, 640px);
+	}
+
+	/* Orb 2 — middle-left: rgb(255,105,26) → #ff5800 */
+	&__orb--2 {
+		animation: 22s ease-in-out 3s infinite orb-drift-b;
+		background: radial-gradient(circle, rgb(255, 105, 26) 0%, #ff5800 60%, transparent 78%);
+		filter: blur(130px);
+		height: clamp(210px, 46vw, 480px);
+		left: -6%;
+		mix-blend-mode: screen;
+		opacity: 0.42;
+		top: 38%;
+		width: clamp(228px, 50vw, 520px);
+	}
+
+	/* Orb 3 — bottom-right: rgb(246,137,64) → #f57c2b */
+	&__orb--3 {
+		animation: 15s ease-in-out 8s infinite orb-drift-c;
+		background: radial-gradient(circle, rgb(246, 137, 64) 0%, #f57c2b 60%, transparent 78%);
+		filter: blur(100px);
+		height: clamp(236px, 52vw, 540px);
+		mix-blend-mode: screen;
+		opacity: 0.36;
+		right: 10%;
+		top: 72%;
+		width: clamp(254px, 56vw, 580px);
+	}
+}
+
+/* Ensure all page content renders above the background layer.
+   Excludes .l-header (sticky) and .c-backtotop (fixed) so their
+   position values are not overridden by this higher-specificity rule. */
+body > *:not(.bg-lights):not(.l-header):not(.c-backtotop) {
+	position: relative;
+	z-index: 1;
+}
+
+/* Icon float animation — extracted from maplink.global/pt-BR/platform (.element3d-float) */
+@keyframes icon-float {
+	0%, to {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-22px) rotate(2.5deg);
+	}
+}
+
+.icon-float {
+	animation: 7s ease-in-out infinite icon-float;
+
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
+	}
+}

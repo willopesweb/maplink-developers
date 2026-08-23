@@ -3,9 +3,28 @@ $layout-name: l-menu;
 .#{$layout-name} {
 	padding-right: $global-module-size;
 
+	&__icon {
+		align-items: center;
+		background-color: rgba(255, 103, 0, 0.12);
+		border-radius: rem(11);
+		display: grid;
+		flex-shrink: 0;
+		height: rem(40);
+		place-items: center;
+		width: rem(40);
+
+		img {
+			display: block;
+			height: rem(24);
+			object-fit: contain;
+			width: rem(24);
+		}
+	}
+
 	&__category {
 		align-items: center;
 		border-radius: rem(10);
+		color: var(--color-on-navy-muted);
 		cursor: pointer;
 		display: flex;
 		gap: rem(10);
@@ -27,8 +46,8 @@ $layout-name: l-menu;
 			}
 
 			&::after {
-				border-bottom: 2px solid var(--theme-color-1);
-				border-right: 2px solid var(--theme-color-1);
+				border-bottom: 2px solid var(--theme-color-3);
+				border-right: 2px solid var(--theme-color-3);
 				content: "";
 				display: flex;
 				height: rem(8);
@@ -42,8 +61,8 @@ $layout-name: l-menu;
 		&:focus,
 		&:active,
 		&.is-active {
-			background-color: var(--theme-color-5);
-			color: var(--theme-color-1);
+			background-color: rgba(255, 255, 255, 0.06);
+			color: var(--theme-color-3);
 		}
 	}
 
@@ -62,6 +81,7 @@ $layout-name: l-menu;
 		a {
 			align-items: center;
 			border-radius: rem(10);
+			color: var(--color-on-navy-muted);
 			display: flex;
 			font-size: rem(14);
 			gap: rem(10);
@@ -77,11 +97,12 @@ $layout-name: l-menu;
 			&:focus,
 			&:active,
 			&.is-active {
-				background-color: var(--theme-color-5);
-				color: var(--theme-color-1);
+				background-color: rgba(255, 255, 255, 0.06);
+				color: var(--theme-color-3);
 			}
 
 			&.is-active {
+				color: var(--theme-color-3);
 				font-weight: 700;
 			}
 		}

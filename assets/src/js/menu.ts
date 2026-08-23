@@ -1,46 +1,59 @@
-const mobileBtn = document.querySelector(".js-mobile-btn");
+const mobileBtn = document.querySelector<HTMLElement>(".js-mobile-btn");
 const mobileMenu = document.querySelector(".js-mobile-menu");
 
 if (mobileBtn && mobileMenu) {
   mobileBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("is-open");
+    const isOpen = mobileMenu.classList.toggle("is-open");
     document.body.classList.toggle("body-locked");
+    mobileBtn.setAttribute("aria-expanded", String(isOpen));
   });
 
-  const links = mobileMenu.querySelectorAll(".js-link-scroll");
-
-  links.forEach((link) => {
+  mobileMenu.querySelectorAll(".js-link-scroll").forEach((link) => {
     link.addEventListener("click", () => {
-      mobileMenu.classList.toggle("is-open");
+      mobileMenu.classList.remove("is-open");
+      document.body.classList.remove("body-locked");
+      mobileBtn.setAttribute("aria-expanded", "false");
     });
   });
 }
 
-const searchButton: NodeListOf<HTMLElement> | null =
-  document.querySelectorAll(".js-search-button");
-const searchBar: HTMLElement | null = document.getElementById("searchMobile");
+const searchButtons = document.querySelectorAll<HTMLElement>(".js-search-button");
+const searchBar = document.getElementById("searchMobile");
 
-if (searchButton && searchBar) {
-  searchButton.forEach((button) =>
+if (searchButtons.length && searchBar) {
+  searchButtons.forEach((button) =>
     button.addEventListener("click", (e: Event) => {
       e.preventDefault();
-      searchBar.classList.toggle("is-visible");
+      const isVisible = searchBar.classList.toggle("is-visible");
+      searchBar.setAttribute("aria-hidden", String(!isVisible));
+      button.setAttribute("aria-expanded", String(isVisible));
+      if (isVisible) {
+        searchBar.querySelector<HTMLElement>("input")?.focus();
+      }
     })
   );
 }
 
-const subMenusMobile: NodeListOf<HTMLElement> | null =
-  document.querySelectorAll(".js-submenu-item");
+const subMenusMobile = document.querySelectorAll<HTMLElement>(".js-submenu-item");
 
 if (subMenusMobile) {
   subMenusMobile.forEach((menu) => {
-    const menuLink = menu.querySelector(".js-submenu-link");
+    const menuLink = menu.querySelector<HTMLElement>(".js-submenu-link");
     const subMenu = menu.querySelector(".js-submenu");
     if (menuLink && subMenu) {
-      menuLink.addEventListener("click", () => {
-        menuLink.classList.toggle("is-submenu-open");
+      const toggle = () => {
+        const isOpen = menuLink.classList.toggle("is-submenu-open");
         menuLink.classList.toggle("is-active");
         subMenu.classList.toggle("is-submenu-open");
+        menuLink.setAttribute("aria-expanded", String(isOpen));
+      };
+
+      menuLink.addEventListener("click", toggle);
+      menuLink.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
       });
     }
   });

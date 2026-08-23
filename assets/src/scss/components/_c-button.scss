@@ -1,41 +1,49 @@
 $component-name: c-button;
 
 @mixin c-button {
-	background-color: var(--theme-color-2);
+	background-color: var(--theme-color-1);
 	border: 0;
-	border-radius: rem(4);
+	border-radius: 9999px;
 	color: #fff !important;
 	cursor: pointer;
-	padding: rem(10) !important;
+	font-weight: 700;
+	padding: rem(13) rem(22) !important;
 	transition: var(--theme-transition);
 	width: fit-content;
 
 	&:hover,
 	&:focus,
 	&:active {
-		background-color: var(--theme-color-6);
+		background-color: var(--color-brand-purple-600);
 		color: #fff !important;
+		transform: translateY(-2px);
 	}
 }
 
 @mixin c-button--secondary {
-	background-color: var(--theme-color-1);
-	border: 0;
-	border-radius: rem(4);
-	color: #fff !important;
+	background-color: transparent;
+	border: 2px solid var(--theme-color-2);
+	border-radius: 9999px;
+	color: var(--theme-color-2) !important;
 	cursor: pointer;
-	padding: rem(10) !important;
+	font-weight: 700;
+	padding: rem(11) rem(22) !important;
 	transition: var(--theme-transition);
 	width: fit-content;
 
 	&:hover,
 	&:focus,
 	&:active {
-		background-color: var(--theme-color-3);
+		background-color: var(--theme-color-2);
 		color: #fff !important;
+		transform: translateY(-2px);
 	}
 }
 
 .#{$component-name} {
 	@include c-button;
+}
+
+.#{$component-name}--secondary {
+	@include c-button--secondary;
 }

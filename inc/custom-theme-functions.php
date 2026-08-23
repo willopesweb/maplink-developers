@@ -25,7 +25,7 @@ function renderSearchForm()
   $html = '<form role="search" method="get" class="l-header__search-form" action="' . esc_url(home_url('/')) . '">';
   $html .= '<label>';
   $html .= '<span class="screen-reader-text">' . $label . '</span>';
-  $html .= '<input required type="search" class="search-field" placeholder="' . $placeholder . '" value="' . $search_query . '" name="s" />';
+  $html .= '<input required type="search" class="search-field" placeholder="' . esc_attr($placeholder) . '" value="' . esc_attr($search_query) . '" name="s" />';
   $html .= '</label>';
   $html .= '<button class="l-header__search-button icon-search" type="submit"></button>';
   $html .= '</form>';
@@ -117,9 +117,7 @@ function get_posts_by_category($category_id)
       );
     }
 
-    wp_reset_query();
     wp_reset_postdata();
-    rewind_posts(); // Restaura o loop global
   }
 
 
@@ -139,19 +137,19 @@ function theme_social_networks()
   $html = '';
   $html .= '<ul class="c-social">';
   if (get_field("whatsapp", $page_home_id)) {
-    $html .= '<li><a href="https://api.whatsapp.com/send?phone=5519' . str_replace(' ', '', get_field("whatsapp", $page_home_id)) . '" class="icon-whatsapp" target="_blank"></a></li>';
+    $html .= '<li><a href="' . esc_url('https://api.whatsapp.com/send?phone=5519' . str_replace(' ', '', get_field("whatsapp", $page_home_id))) . '" class="icon-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a></li>';
   }
   if (get_field("instagram", $page_home_id)) {
-    $html .= '<li><a class="icon-instagram" href="' . get_field("instagram", $page_home_id) . '" title="Nos Siga no Instagram" target="_blank" rel="_nofollow"></a></li>';
+    $html .= '<li><a class="icon-instagram" href="' . esc_url(get_field("instagram", $page_home_id)) . '" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>';
   }
   if (get_field("facebook", $page_home_id)) {
-    $html .= '<li><a class="icon-facebook" href="' . get_field("facebook", $page_home_id) . '" title="Curta nossa página no Facebook" target="_blank" rel="_nofollow"></a></li>';
+    $html .= '<li><a class="icon-facebook" href="' . esc_url(get_field("facebook", $page_home_id)) . '" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>';
   }
   if (get_field("linkedin", $page_home_id)) {
-    $html .= '<li><a class="icon-linkedin" href="' . get_field("linkedin", $page_home_id) . '" title="Curta nossa página no Linkedin" target="_blank" rel="_nofollow"></a></li>';
+    $html .= '<li><a class="icon-linkedin" href="' . esc_url(get_field("linkedin", $page_home_id)) . '" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>';
   }
   if (get_field("youtube", $page_home_id)) {
-    $html .= '<li><a class="icon-youtube" href="' . get_field("youtube", $page_home_id) . '" title="Se inscreve no nosso canal no YouTube" target="_blank" rel="_nofollow"></a></li>';
+    $html .= '<li><a class="icon-youtube" href="' . esc_url(get_field("youtube", $page_home_id)) . '" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>';
   }
   $html .= '</ul>';
 
@@ -177,6 +175,9 @@ function theme_custom_pagination($query = null)
   if ($current_language === 'en_US') {
     $next = "Next";
     $previous = "Previous";
+  } elseif ($current_language === 'es_ES') {
+    $next = "Siguiente";
+    $previous = "Anterior";
   }
 
 
@@ -192,8 +193,8 @@ function theme_custom_pagination($query = null)
     'end_size'     => 2,
     'mid_size'     => 1,
     'prev_next'    => true,
-    'prev_text'    => sprintf('<i></i> %1$s', $next),
-    'next_text'    => sprintf('%1$s <i></i>', $previous),
+    'prev_text'    => sprintf('<i></i> %1$s', $previous),
+    'next_text'    => sprintf('%1$s <i></i>', $next),
     'add_args'     => false,
     'add_fragment' => '',
   ));

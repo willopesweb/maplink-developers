@@ -1,30 +1,35 @@
 :root {
-	--theme-color-1: #6b339f;
-	--theme-color-2: #f2702a;
-	--theme-color-3: #5325ea;
-	--theme-color-4: #dacce7;
-	--theme-color-5: #f1f2f4;
-	--theme-color-6: #cb5b12;
 
-	--text-color-1: rgb(34, 34, 34);
+	/* Brand colors */
+	--theme-color-1: #4b007f;
+	--theme-color-2: #ff6700;
+	--theme-color-3: #a74ff3;
+	--theme-color-4: rgba(255, 255, 255, 0.12);
+	--theme-color-5: #f2f2f2;
+
+	/* Extended brand palette */
+	--color-navy: #1c1c1c;
+	--color-brand-purple-600: #3d0068;
+	--color-brand-orange: #ff6700;
+	--color-on-navy-muted: #c4a8e8;
+
+	/* Text colors */
+	--text-color-1: #f2f2f2;
 	--text-color-2: #fff;
-	--text-color-3: #7c89a0;
-	--text-color-4: #464f61;
+	--text-color-3: #c4a8e8;
 
-	--main-text-color: --text-color-1;
-	--body-background-color: #fefefe;
+	--main-text-color: var(--text-color-1);
+	--body-background-color: var(--color-navy);
 
-	--theme-font-family: "Montserrat", sans-serif;
-	--theme-box-shadow: 0 0 24px var(--theme-color-5);
+	--theme-font-family: "Outfit", sans-serif;
+	--theme-box-shadow: 0 16px 38px -12px rgba(75, 0, 127, 0.42);
 	--theme-transition: 0.5s all ease;
 }
 
 body {
 	background-color: var(--body-background-color);
 	color: var(--main-text-color);
-	font-display: swap;
 	font-family: var(--theme-font-family);
-
 }
 
 /*SOCIAL COLORS*/
@@ -50,26 +55,4 @@ $social-media-colors: (
 
 $global-max-width-raw: 1300;
 $global-max-width: rem($global-max-width-raw);
-$global-font-size: rem(18);
-$global-line-height: 1.5;
-$global-radius: rem(10);
-$global-border-radius: rem(7);
 $global-module-size: rem(20);
-
-// ==========================================================================
-// Transitions
-// ==========================================================================
-
-$transition-duration: 305ms;
-$transition-duration-complex: 385ms;
-$transition-duration-entrance: 235ms;
-$transition-duration-exit: 205ms;
-$transition-duration-fast: 150ms;
-
-$transition-function-ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-$transition-function-ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-$transition-function-ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-$transition-function-ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-$transition-function-ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-$transition-function-ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
-$transition-function-elastic: cubic-bezier(0.175, 0.885, 0.41, 1.46);

@@ -1,8 +1,9 @@
 $layout-name: c-post;
 
 .#{$layout-name} {
-	border: 1px solid var(--theme-color-4);
-	box-shadow: var(--theme-box-shadow);
+	background-color: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: rem(16);
 	display: flex;
 	flex-direction: column;
 	gap: $global-module-size;
@@ -13,7 +14,8 @@ $layout-name: c-post;
 	&:hover,
 	&:active,
 	&:focus {
-		border-color: var(--theme-color-2);
+		background-color: rgba(255, 255, 255, 0.07);
+		border-color: rgba(255, 103, 0, 0.5);
 
 		.c-post__title {
 			color: var(--theme-color-2);
@@ -26,19 +28,22 @@ $layout-name: c-post;
 	}
 
 	&__title {
-		color: var(--theme-color-1);
+		color: var(--text-color-1);
 		font-size: rem(18);
+		font-weight: 600;
 		transition: var(--theme-transition);
 	}
 
 	&__subtitle {
-		color: var(--text-color-1);
+		color: var(--color-on-navy-muted);
 		font-size: rem(14);
 	}
 
 	&__categorie {
-		color: var(--text-color-4);
+		color: var(--theme-color-3);
 		font-size: rem(12);
 		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
 	}
 }

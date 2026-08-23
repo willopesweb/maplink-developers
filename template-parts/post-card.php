@@ -1,15 +1,17 @@
 <?php
-apply_filters('excerpt_length', 10); // Diminui o tamanho do resumo
+$cats = get_the_category();
 ?>
 <article>
-  <a class="c-post" href="<?= the_permalink() ?>" title="<?= the_title(); ?>">
+  <a class="c-post" href="<?= esc_url(get_permalink()) ?>" title="<?= esc_attr(get_the_title()) ?>">
     <header class="c-post__header">
-      <span class="c-post__categorie"><?= get_the_category()[0]->name ?></span>
+      <?php if (!empty($cats)) : ?>
+        <span class="c-post__categorie"><?= esc_html($cats[0]->name) ?></span>
+      <?php endif; ?>
       <h2 class="c-post__title">
-        <?= the_title(); ?>
+        <?= esc_html(get_the_title()) ?>
       </h2>
       <p class="c-post__subtitle">
-        <?= summarizeText(get_the_excerpt()) ?>
+        <?= esc_html(summarizeText(get_the_excerpt())) ?>
       </p>
     </header>
   </a>

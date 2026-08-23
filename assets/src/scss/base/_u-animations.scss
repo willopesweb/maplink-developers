@@ -10,10 +10,6 @@
 	}
 }
 
-.fadeInDown {
-	animation-name: fadeInDown;
-}
-
 @keyframes fadeInUp {
 	from {
 		opacity: 0;
@@ -26,16 +22,18 @@
 	}
 }
 
+.fadeInDown {
+	animation-name: fadeInDown;
+}
 .fadeInUp {
 	animation-name: fadeInUp;
 }
 
-/*  .animate {
- 	animation-duration: 1.6s;
- 	animation-fill-mode: forwards;
- 	animation-iteration-count: 1;
- 	transition:
- 		transform 1000ms cubic-bezier(0.19, 1, 0.22, 1),
- 		opacity 1000ms cubic-bezier(0.19, 1, 0.22, 1);
- 	transition-delay: 500ms;
- } */
+@media (prefers-reduced-motion: reduce) {
+	.fadeInDown,
+	.fadeInUp {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
+}

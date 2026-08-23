@@ -14,15 +14,21 @@ add_action('pre_get_posts', 'custom_archive_query');
 
 function theme_css()
 {
-  wp_register_style('theme-style', get_template_directory_uri() . '/' . ASSETS_DIR . '/css/main.css', [], '1.5.3', false);
+  wp_enqueue_style('theme-fonts-outfit', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap', [], null);
+  wp_register_style('theme-style', get_template_directory_uri() . '/' . ASSETS_DIR . '/css/main.css', ['theme-fonts-outfit'], '1.6.0', false);
   wp_register_style('theme-icons', get_template_directory_uri() . '/' . ASSETS_DIR . '/fonts/icons.css', [], '1.0.0', false);
   wp_enqueue_style('theme-style');
   wp_enqueue_style('theme-icons');
 }
 add_action('wp_enqueue_scripts', 'theme_css');
 
+function theme_js()
+{
+  wp_enqueue_script('theme-main', get_template_directory_uri() . '/' . ASSETS_DIR . '/js/main.js', [], '1.6.0', true);
+}
+add_action('wp_enqueue_scripts', 'theme_js');
+
 
 require "inc/custom-admin-login.php";
-//require "inc/performance.php";
 require "inc/custom-theme-functions.php";
 require "inc/menu-categories.php";

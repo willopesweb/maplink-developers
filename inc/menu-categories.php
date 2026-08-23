@@ -7,7 +7,7 @@ function categoriesMenu($showPosts = true)
   $activePost = (is_single() ? get_the_ID() : 0);
 
   if (!empty($categories)) {
-    echo '<nav class="l-menu">';
+    echo '<nav class="l-menu" aria-label="Categorias da documentação">';
     echo '<ul>';
 
     foreach ($categories as $categoria_completa) {
@@ -16,7 +16,7 @@ function categoriesMenu($showPosts = true)
       $categoryIcon = isset($categoria_completa['icone']) ? esc_url($categoria_completa['icone']) : '';
 
       echo '<li class="js-submenu-item">';
-      echo '<span class="l-menu__category js-submenu-link ' . ($activeCategory === $categoryId ? "is-active is-submenu-open" : "") . '" title="' . $categoryName . '">';
+      echo '<span class="l-menu__category js-submenu-link ' . ($activeCategory === $categoryId ? "is-active is-submenu-open" : "") . '" role="button" tabindex="0" aria-expanded="' . ($activeCategory === $categoryId ? "true" : "false") . '" title="' . $categoryName . '">';
 
       if ($categoryIcon) {
         echo '<span class="l-menu__icon">';
