@@ -6,7 +6,7 @@ endif;
 
 <footer class="l-footer">
   <div class="l-footer__content">
-    <p>© Maplink <?php echo date("Y"); ?></p>
+    <p>© Maplink Cloud - <?php echo date("Y"); ?></p>
     <div class="l-footer__social">
       <?= theme_social_networks() ?>
     </div>
