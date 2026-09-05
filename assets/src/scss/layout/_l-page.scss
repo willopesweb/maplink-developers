@@ -67,7 +67,12 @@ $layout-name: l-page;
 				display: flex;
 				grid-column: 1;
 				grid-row: 1;
+				max-height: calc(100vh - #{$header-height} - #{$global-module-size} * 2);
+				overflow-y: auto;
+				overscroll-behavior: contain;
 				position: sticky;
+				scrollbar-width: thin;
+				scrollbar-color: rgba(167, 79, 243, 0.4) transparent;
 				top: calc(#{$header-height} + #{$global-module-size});
 			}
 

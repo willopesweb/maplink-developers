@@ -107,9 +107,9 @@ elseif ($current_language === 'es_ES') $lang_bcp47 = 'es';
             <a target="_blank" href="https://maplink.global/" title="<?= $home_link[1] ?>">
               <?= $home_link[0] ?></a>
           </li>
-          <?php
-          categoriesMenu(false);
-          ?>
+          <li class="c-nav__categories-wrapper">
+            <?php categoriesMenu(false); ?>
+          </li>
           <li class="c-nav__link" title="<?= $support_link[1] ?>">
             <a target="_blank" rel="nofollow" href="<?= get_field("link_suporte", $page_home_id) ?>" title="<?= $support_link[1] ?>">
               <?= $support_link[0] ?>
@@ -151,7 +151,7 @@ elseif ($current_language === 'es_ES') $lang_bcp47 = 'es';
         if ($support_url) :
           $cta_label = $current_language === 'en_US' ? 'Contact us' : ($current_language === 'es_ES' ? 'Contáctenos' : 'Fale conosco');
         ?>
-          <a class="c-button c-button--secondary l-header__cta" href="<?= esc_url($support_url) ?>" target="_blank" rel="nofollow noopener">
+          <a class="c-button c-button--primary l-header__cta" href="<?= esc_url($support_url) ?>" target="_blank" rel="nofollow noopener">
             <?= esc_html($cta_label) ?>
           </a>
         <?php endif; ?>

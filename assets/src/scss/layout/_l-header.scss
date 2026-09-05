@@ -80,6 +80,10 @@ $desktop: 1200;
 					color: var(--text-color-2);
 				}
 			}
+
+			option {
+				color: #000;
+			}
 		}
 	}
 
@@ -95,6 +99,7 @@ $desktop: 1200;
 
 		@include breakpoint($desktop) {
 			display: flex;
+			width: max-content;
 		}
 	}
 
